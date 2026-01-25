@@ -181,11 +181,121 @@ document.addEventListener('DOMContentLoaded', () => {
             colors: ["#ffffff", "#000000"],
             sizes: ["S", "M", "L", "XL"],
             newArrival: false
+        },
+        {
+            id: 17,
+            name: "Neural Interface Visor",
+            price: 120.00,
+            category: "Cybernetic",
+            description: "Augmented reality ready eyewear with heads-up display integration.",
+            image: "https://images.unsplash.com/photo-1620216462663-12827e956c38?w=500&auto=format&fit=crop&q=60",
+            colors: ["#000000", "#silver"],
+            sizes: ["One Size"],
+            newArrival: true
+        },
+        {
+            id: 18,
+            name: "Void Cargo Joggers",
+            price: 85.00,
+            category: "Techwear",
+            description: "Water-resistant joggers with articulated knees and magnetic pockets.",
+            image: "https://images.unsplash.com/photo-1552160753-117159821e01?w=500&auto=format&fit=crop&q=60",
+            colors: ["#000000", "#2c3e50"],
+            sizes: ["S", "M", "L", "XL"],
+            newArrival: false
+        },
+        {
+            id: 19,
+            name: "Neon Pulse Sneakers",
+            price: 140.00,
+            category: "Neon",
+            description: "High-top sneakers with electroluminescent panels.",
+            image: "https://images.unsplash.com/photo-1605812860427-4024433a70fd?w=500&auto=format&fit=crop&q=60",
+            colors: ["#000000", "#ffffff"],
+            sizes: ["7", "8", "9", "10", "11"],
+            newArrival: true
+        },
+        {
+            id: 20,
+            name: "Structureless Tunic",
+            price: 110.00,
+            category: "Avant-Garde",
+            description: "Fluid draping fabric that changes silhouette with movement.",
+            image: "https://images.unsplash.com/photo-1595326995085-9e14d5b469d4?w=500&auto=format&fit=crop&q=60",
+            colors: ["#333333", "#555555"],
+            sizes: ["S/M", "L/XL"],
+            newArrival: false
+        },
+        {
+            id: 21,
+            name: "Industrial Belt",
+            price: 45.00,
+            category: "Industrial",
+            description: "Heavy-duty webbing with quick-release metal buckle.",
+            image: "https://images.unsplash.com/photo-1624223022676-56200a7a9e60?w=500&auto=format&fit=crop&q=60",
+            colors: ["#ffcc00", "#000000"],
+            sizes: ["Adjustable"],
+            newArrival: false
+        },
+        {
+            id: 22,
+            name: "Monochrome Layered Tee",
+            price: 55.00,
+            category: "Monochrome",
+            description: "Double-layer cotton jersey with raw hem details.",
+            image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500&auto=format&fit=crop&q=60",
+            colors: ["#ffffff", "#000000"],
+            sizes: ["S", "M", "L", "XL"],
+            newArrival: false
+        },
+        {
+            id: 23,
+            name: "Streetwise Bomber",
+            price: 160.00,
+            category: "Street",
+            description: "Classic silhouette updated with tech fabrics and hidden pockets.",
+            image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500&auto=format&fit=crop&q=60",
+            colors: ["#000000", "#3b3b3b"],
+            sizes: ["M", "L", "XL"],
+            newArrival: true
+        },
+        {
+            id: 24,
+            name: "Pure Form Dress",
+            price: 130.00,
+            category: "Minimalist",
+            description: "Architectural lines in a simple, elegant form.",
+            image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&auto=format&fit=crop&q=60",
+            colors: ["#000000", "#ffffff"],
+            sizes: ["XS", "S", "M", "L"],
+            newArrival: false
+        },
+        {
+            id: 25,
+            name: "Cybernetic Arm Sleeve",
+            price: 45.00,
+            category: "Cybernetic",
+            description: "Compression sleeve with printed circuit patterns.",
+            image: "https://images.unsplash.com/photo-1618331835717-801e976710b2?w=500&auto=format&fit=crop&q=60",
+            colors: ["#000000"],
+            sizes: ["S", "M", "L"],
+            newArrival: false
+        },
+        {
+            id: 26,
+            name: "Data Stream Leggings",
+            price: 65.00,
+            category: "Cybernetic",
+            description: "High-performance leggings with reflective data stream prints.",
+            image: "https://images.unsplash.com/photo-1545127398-14699f92334b?w=500&auto=format&fit=crop&q=60",
+            colors: ["#000000", "#1a1a1a"],
+            sizes: ["XS", "S", "M", "L"],
+            newArrival: false
         }
     ];
     
     let products = JSON.parse(localStorage.getItem('void_products'));
-    if (!products || products.length === 0) {
+    if (!products || products.length < defaultProducts.length) {
         products = defaultProducts;
         localStorage.setItem('void_products', JSON.stringify(products));
     }
@@ -422,40 +532,56 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-   const observerOptions = {
-        threshold: 0.2,
-        rootMargin: "0px 0px -50px 0px"
-    };
+    function initScrollAnimations() {
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: "0px 0px -50px 0px"
+        };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target);
-            }
+        scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    scrollObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const elementsToAnimate = document.querySelectorAll(
+            'section > h1, section > h2, .hero-text, .featured-card, .lookbook-item, .collection-card, .testimonial-card, .faq-item, .about-content, #contact form, .footer-section, .checkout-form-section, .checkout-summary-section'
+        );
+        
+        elementsToAnimate.forEach(el => {
+            el.classList.add('reveal');
+            scrollObserver.observe(el);
         });
-    }, observerOptions);
+    }
 
-    const elements = document.querySelectorAll('#home, #new-arrivals, #lookbook, #shop, #about, #contact , .footer-content, #testimonials, .faq-container, .footer-content, .product-card, .featured-card, #cart, #product-detail');
-    elements.forEach(el => {
-        el.classList.add('reveal');
-        observer.observe(el);
-    });
+    function setupEventListeners() {
+        // Hamburger Menu
+        const hamburger = document.querySelector('.hamburger');
+        const navLinksList = document.querySelector('.nav-links');
 
+        if (hamburger && navLinksList) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('open');
+                navLinksList.classList.toggle('open');
+            });
+        }
+
+        // --- Main Event Listeners ---
         // Navigation
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
                 
-                // Only intercept hash links (anchors on the same page)
                 if (href.startsWith('#')) {
                     const targetElement = document.querySelector(href);
                     if (targetElement) {
                         e.preventDefault();
-                        // Close mobile nav if open
-                        if(navLinks.classList.contains('open')) {
-                            navLinks.classList.remove('open');
-                            hamburger.classList.remove('open');
+                        if(navLinksList && navLinksList.classList.contains('open')) {
+                            navLinksList.classList.remove('open');
+                            if(hamburger) hamburger.classList.remove('open');
                         }
                         targetElement.scrollIntoView({
                             behavior: 'smooth'
@@ -464,26 +590,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-
         // Cart
         const cartIcon = document.querySelector('.cart-icon');
         if(cartIcon) cartIcon.addEventListener('click', () => toggleCart(true));
-        
         const closeCartBtn = document.querySelector('.close-cart');
         if(closeCartBtn) closeCartBtn.addEventListener('click', () => toggleCart(false));
-        
         const checkoutBtn = document.querySelector('.checkout-btn');
         if(checkoutBtn) {
             checkoutBtn.addEventListener('click', () => {
                 window.location.href = 'checkout.html';
             });
         }
-
         const placeOrderBtn = document.getElementById('place-order-btn');
         const paymentModal = document.getElementById('payment-modal');
         const closePaymentModal = document.getElementById('close-payment-modal');
         const confirmPaymentBtn = document.getElementById('confirm-payment-btn');
-
         if(placeOrderBtn && paymentModal) {
             placeOrderBtn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -501,19 +622,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 paymentModal.style.display = 'flex';
             });
         }
-
         if(closePaymentModal && paymentModal) {
             closePaymentModal.addEventListener('click', () => paymentModal.style.display = 'none');
         }
-        
         if(paymentModal) window.addEventListener('click', (e) => { if(e.target === paymentModal) paymentModal.style.display = 'none'; });
-
         if(confirmPaymentBtn) {
             // Input Formatting Logic
             const cardNumInput = document.getElementById('card-number');
             const cardIcon = document.getElementById('card-icon');
             const cardExpiry = document.getElementById('card-expiry');
-
             if(cardNumInput) {
                 cardNumInput.addEventListener('input', (e) => {
                     let value = e.target.value.replace(/\D/g, '');
@@ -534,7 +651,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     e.target.value = value;
                 });
             }
-
             if(cardExpiry) {
                 cardExpiry.addEventListener('input', (e) => {
                     let value = e.target.value.replace(/\D/g, '');
@@ -544,14 +660,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     e.target.value = value;
                 });
             }
-
             confirmPaymentBtn.addEventListener('click', async () => {
                 // Basic Validation
                 const cardNum = document.getElementById('card-number').value;
                 const cardExp = document.getElementById('card-expiry').value;
                 const cardCvc = document.getElementById('card-cvc').value;
                 const cardName = document.getElementById('card-name').value;
-
                 if(!cardNum || !cardExp || !cardCvc || !cardName) {
                     alert('Please fill in all payment details.');
                     return;
@@ -591,13 +705,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = `profile.html`;
             });
         }
-        
         // Product Detail
         const closeDetailBtn = document.querySelector('.close-detail');
         if(closeDetailBtn) {
             closeDetailBtn.addEventListener('click', () => hideProductDetail());
         }
-
         // Search
         const searchInput = document.getElementById('shop-search');
         if(searchInput) {
@@ -606,7 +718,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderShop();
             });
         }
-
         // Sort
         const sortSelect = document.getElementById('shop-sort');
         if(sortSelect) {
@@ -615,7 +726,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderShop();
             });
         }
-
         // Load More
         const loadMoreBtn = document.getElementById('load-more-btn');
         if(loadMoreBtn) {
@@ -624,7 +734,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderShop();
             });
         }
-
         // Scroll Top
         const scrollTopBtn = document.getElementById('scroll-top');
         if(scrollTopBtn) {
@@ -632,7 +741,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
-
         // --- Auth System -------------------------------------------------------
         const authModal = document.getElementById('auth-modal');
         const userIcon = document.querySelector('.user-icon');
@@ -641,7 +749,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const authForms = document.querySelectorAll('.auth-form');
         const loginForm = document.getElementById('login-form');
         const signupForm = document.getElementById('signup-form');
-
         // Check Login State
         function checkLoginState() {
             const currentUserStr = localStorage.getItem('void_current_user');
@@ -666,7 +773,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         checkLoginState();
-
         if (userIcon) {
             userIcon.addEventListener('click', (e) => {
                 const currentUser = localStorage.getItem('void_current_user');
@@ -676,17 +782,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
-
         if (closeAuthBtn && authModal) {
             closeAuthBtn.addEventListener('click', () => authModal.style.display = 'none');
         }
-
         if (authModal) {
             window.addEventListener('click', (e) => {
                 if (e.target === authModal) authModal.style.display = 'none';
             });
         }
-
         authTabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 authTabs.forEach(t => t.classList.remove('active'));
@@ -697,7 +800,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById(targetId).classList.add('active');
             });
         });
-
         if (signupForm) {
             signupForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
@@ -705,7 +807,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const email = document.getElementById('signup-email').value;
                 const password = document.getElementById('signup-pass').value;
                 const avatarFile = document.getElementById('signup-avatar') ? document.getElementById('signup-avatar').files[0] : null;
-
                 let users = JSON.parse(localStorage.getItem('void_users')) || [];
                 
                 if (users.some(u => u.email === email)) {
@@ -733,7 +834,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 signupForm.reset();
             });
         }
-
         if (loginForm) {
             loginForm.addEventListener('submit', (e) => {
                 e.preventDefault();
@@ -742,7 +842,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 const users = JSON.parse(localStorage.getItem('void_users')) || [];
                 const user = users.find(u => u.email === email && u.password === password);
-
                 if (user) {
                     localStorage.setItem('void_current_user', JSON.stringify({ 
                         name: user.name, 
@@ -761,12 +860,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
-
         // Forgot Password Logic
         const forgotPassLink = document.getElementById('forgot-pass-link');
         const backToLoginLink = document.getElementById('back-to-login');
         const forgotPassForm = document.getElementById('forgot-pass-form');
-
         if (forgotPassLink) {
             forgotPassLink.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -774,7 +871,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (forgotPassForm) forgotPassForm.classList.add('active');
             });
         }
-
         if (backToLoginLink) {
             backToLoginLink.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -782,7 +878,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (loginForm) loginForm.classList.add('active');
             });
         }
-
         if (forgotPassForm) {
             forgotPassForm.addEventListener('submit', (e) => {
                 e.preventDefault();
@@ -809,7 +904,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
-
         // Password Toggle
         document.querySelectorAll('.password-toggle').forEach(toggle => {
             toggle.addEventListener('click', () => {
@@ -828,7 +922,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-
         // Newsletter
         const newsletterForms = document.querySelectorAll('.newsletter-form');
         newsletterForms.forEach(form => {
@@ -838,8 +931,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 form.reset();
             });
         });
+    }
 
-    
     function renderShop() {
         const grid = document.querySelector('.product-grid');
         
@@ -922,6 +1015,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.innerHTML = `
                         <div class="product-image-wrapper">
                             <img src="${product.image || 'https://via.placeholder.com/300'}" alt="${product.name}" class="product-card-image">
+                            <button class="quick-view-btn">Quick View</button>
                         </div>
                         <h3>${product.name}</h3>
                         <p>$${product.price.toFixed(2)}</p>
@@ -949,6 +1043,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.innerHTML = `
                     <div class="product-image-wrapper" style="margin-bottom: 1.5rem;">
                         <img src="${product.image || 'https://via.placeholder.com/300'}" alt="${product.name}" class="product-card-image" style="height: 300px; margin-bottom: 0;">
+                        <button class="quick-view-btn">Quick View</button>
                     </div>
                     <h3>${product.name}</h3>
                     <p>$${product.price.toFixed(2)}</p>

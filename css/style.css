@@ -226,6 +226,36 @@ h2 {
     transition: transform 0.5s ease;
 }
 
+/* Quick View Button */
+.quick-view-btn {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: var(--bg-color);
+    padding: 0.8rem 1.5rem;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0;
+    width: 80%;
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.product-image-wrapper:hover .quick-view-btn {
+    bottom: 20px;
+    opacity: 1;
+}
+
+.quick-view-btn:hover {
+    background: var(--accent-color);
+    color: var(--primary-color);
+}
+
 .featured-card h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
@@ -652,7 +682,7 @@ footer {
     margin: 0 auto;
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 60px;
 }
 
 .collection-slider {
@@ -719,11 +749,12 @@ footer {
 }
 
 .slider-btn {
-    background: rgba(0,0,0,0.5);
-    border: 1px solid var(--primary-color);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--primary-color);
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 10;
@@ -732,20 +763,28 @@ footer {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .slider-btn:hover {
     background: var(--accent-color);
     border-color: var(--accent-color);
     color: var(--bg-color);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
 }
 
 .prev-btn {
-    margin-right: 1rem;
+    left: 10px;
+    margin-right: 0;
 }
 
 .next-btn {
-    margin-left: 1rem;
+    right: 10px;
+    margin-left: 0;
 }
 
 /* Responsive */
