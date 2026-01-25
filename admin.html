@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Void - Admin Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <style>
+        .admin-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-card h3 {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .stat-card p {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="admin-login-overlay">
+        <div class="login-box">
+            <h2>Admin Access</h2>
+            <form id="admin-login-form">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="admin-user" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="admin-pass" required>
+                </div>
+                <button type="submit" class="cta-btn" style="width: 100%;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <header style="display: none;">
+        <nav>
+            <div class="logo">VOID ADMIN</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Back to Site</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="display: none;">
+        <section class="admin-container">
+            <div class="admin-header">
+                <h1>Dashboard Overview</h1>
+            </div>
+            <div class="admin-stats-grid">
+                <div class="stat-card">
+                    <h3>Total Products</h3>
+                    <p id="stat-total-products">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Inventory Value</h3>
+                    <p id="stat-total-value">$0.00</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Average Price</h3>
+                    <p id="stat-avg-price">$0.00</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Top Category</h3>
+                    <p id="stat-top-category">-</p>
+                </div>
+            </div>
+
+            <div class="admin-header">
+                <h1>Product Management</h1>
+                <button id="add-product-btn" class="cta-btn">Add New Product</button>
+            </div>
+
+            <div class="admin-content">
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Category</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-product-list">
+                            <!-- Products injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add/Edit Modal -->
+    <div id="admin-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">Add Product</h2>
+            <form id="product-form">
+                <input type="hidden" id="product-id">
+                
+                <div class="form-group">
+                    <label>Product Name</label>
+                    <input type="text" id="p-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Price ($)</label>
+                    <input type="number" id="p-price" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="p-category" required>
+                        <option value="Street">Street</option>
+                        <option value="Minimalist">Minimalist</option>
+                        <option value="Cybernetic">Cybernetic</option>
+                        <option value="Neon">Neon</option>
+                        <option value="Techwear">Techwear</option>
+                        <option value="Avant-Garde">Avant-Garde</option>
+                        <option value="Industrial">Industrial</option>
+                        <option value="Monochrome">Monochrome</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Colors (Hex codes, comma separated)</label>
+                    <input type="text" id="p-colors" placeholder="#000000, #ffffff">
+                </div>
+
+                <div class="form-group">
+                    <label>Sizes (Comma separated)</label>
+                    <input type="text" id="p-sizes" placeholder="S, M, L, XL">
+                </div>
+
+                <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+                    <input type="checkbox" id="p-new-arrival" style="width: auto; margin: 0;">
+                    <label for="p-new-arrival" style="margin: 0; cursor: pointer;">Feature in New Arrivals</label>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="p-desc" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Product Image (File)</label>
+                    <input type="file" id="p-image" accept="image/*">
+                </div>
+
+                <div class="form-group">
+                    <label>Or Product Image (URL)</label>
+                    <input type="text" id="p-image-url" placeholder="https://example.com/image.jpg">
+                </div>
+
+                <button type="submit" class="cta-btn">Save Product</button>
+            </form>
+        </div>
+    </div>
+
+    <footer style="display: none;">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>VOID ADMIN</h3>
+                <p>Internal Management System</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#shop">Shop</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 VOID. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Reuse main.js for shared logic if needed, but admin.js handles specific logic -->
+    <script src="js/admin.js"></script>
+</body>
+</html>

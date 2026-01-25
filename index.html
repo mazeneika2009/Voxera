@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Void - 3D Clothing Brand</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">VOID</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#shop" class="nav-link">Shop</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 6.414L.757 3.172l1.415-1.415L5.414 5h15.242a1 1 0 0 1 .958 1.287l-2.4 8a1 1 0 0 1-.958.713H6v2h12v2H5a1 1 0 0 1-1-1V6.414zM5.5 21a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="hamburger">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="hero-text">
+                <h1>FUTURE FORMS</h1>
+                <p>Explore the intersection of digital art and apparel.</p>
+                <a href="#shop" class="cta-btn">Discover the Collection</a>
+            </div>
+        </section>
+
+        <section id="new-arrivals" class="text-center">
+            <h2>New Arrivals</h2>
+            <div class="collection-slider-container">
+                <button type="button" class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <div class="collection-slider">
+                </div>
+                <button type="button" class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section id="lookbook">
+            <h2>Style Lookbook</h2>
+            <div class="lookbook-grid">
+                <div class="lookbook-item">
+                    <img src="https://images.unsplash.com/photo-1693443688057-85f57b872a3c?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Lookbook Style 1">
+                    <div class="lookbook-caption">
+                        <h3>Urban Explorer</h3>
+                        <p>Combining functional techwear with minimalist aesthetics for the modern cityscape.</p>
+                    </div>
+                </div>
+                <div class="lookbook-item">
+                    <img src="https://images.unsplash.com/photo-1516082669438-2d2bb5082626?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Lookbook Style 2">
+                    <div class="lookbook-caption">
+                        <h3>Digital Nomad</h3>
+                        <p>Comfort and style for a life on the move. Versatile pieces that adapt to any environment.</p>
+                    </div>
+                </div>
+                <div class="lookbook-item">
+                    <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?w=500&auto=format&fit=crop&q=60" alt="Lookbook Style 3">
+                    <div class="lookbook-caption">
+                        <h3>Neon Nights</h3>
+                        <p>Vibrant hues designed for the nocturnal wanderer in the digital metropolis.</p>
+                    </div>
+                </div>
+                <div class="lookbook-item">
+                    <img src="https://images.unsplash.com/photo-1485230405346-71acb9518d9c?w=500&auto=format&fit=crop&q=60" alt="Lookbook Style 4">
+                    <div class="lookbook-caption">
+                        <h3>Zero Gravity</h3>
+                        <p>Lightweight fabrics engineered for maximum mobility and comfort.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="shop" class="text-center">
+            <h2>Collections</h2>
+            <div class="collection-slider-container">
+                <button type="button" class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <div class="collection-slider">
+                    <div class="collection-card">
+                        <img src="https://images.unsplash.com/photo-1693443688057-85f57b872a3c?w=500" alt="Cybernetic">
+                        <div class="collection-info">
+                            <h3>Cybernetic</h3>
+                            <a href="collection.html?category=Cybernetic" class="collection-link">View</a>
+                        </div>
+                    </div>
+                    <div class="collection-card">
+                        <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500" alt="Minimalist">
+                        <div class="collection-info">
+                            <h3>Minimalist</h3>
+                            <a href="collection.html?category=Minimalist" class="collection-link">View</a>
+                        </div>
+                    </div>
+                    <div class="collection-card">
+                        <img src="https://images.unsplash.com/photo-1504194921103-f8b80cadd5e4?w=500&auto=format&fit=crop&q=60" alt="Industrial">
+                        <div class="collection-info">
+                            <h3>Industrial</h3>
+                            <a href="collection.html?category=Industrial" class="collection-link">View</a>
+                        </div>
+                    </div>
+                    <div class="collection-card">
+                        <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=500&auto=format&fit=crop&q=60" alt="Neon">
+                        <div class="collection-info">
+                            <h3>Neon</h3>
+                            <a href="collection.html?category=Neon" class="collection-link">View</a>
+                        </div>
+                    </div>
+                    <div class="collection-card">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60" alt="Avant-Garde">
+                        <div class="collection-info">
+                            <h3>Avant-Garde</h3>
+                            <a href="collection.html?category=Avant-Garde" class="collection-link">View</a>
+                        </div>
+                    </div>
+                    <div class="collection-card">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=60" alt="Techwear">
+                        <div class="collection-info">
+                            <h3>Techwear</h3>
+                            <a href="collection.html?category=Techwear" class="collection-link">View</a>
+                        </div>
+                    </div>
+                    <div class="collection-card">
+                        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500&auto=format&fit=crop&q=60" alt="Monochrome">
+                        <div class="collection-info">
+                            <h3>Monochrome</h3>
+                            <a href="collection.html?category=Monochrome" class="collection-link">View</a>
+                        </div>
+                    </div>
+                    <div class="collection-card">
+                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500&auto=format&fit=crop&q=60" alt="Street">
+                        <div class="collection-info">
+                            <h3>Street</h3>
+                            <a href="collection.html?category=Street" class="collection-link">View</a>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>ABOUT VOID</h2>
+                    <p>We are a collective of artists and designers exploring the boundaries of fashion in the digital age. Our work is a fusion of cutting-edge 3D design and high-quality apparel, creating pieces that are both art and clothing.</p>
+                    <p>Each item in our collection is meticulously crafted, from the initial concept in virtual space to the final physical product. We believe in sustainable practices and limited runs to ensure exclusivity and quality.</p>
+                </div>
+                <div class="about-image">
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="text-center">
+            <h2>What Our Users Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The quality of the fabrics combined with the AR experience is unlike anything I've seen before. VOID is truly the future."</p>
+                    <p class="testimonial-author">Alex Chen</p>
+                    <p class="testimonial-role">Digital Artist</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I love how the clothes fit both my physical style and my digital avatar. The cross-platform compatibility is seamless."</p>
+                    <p class="testimonial-author">Sarah Jenkins</p>
+                    <p class="testimonial-role">Metaverse Explorer</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Fast shipping, incredible packaging, and the product itself is a masterpiece of design. Highly recommended."</p>
+                    <p class="testimonial-author">Marcus Thorne</p>
+                    <p class="testimonial-role">Fashion Blogger</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Get in Touch</h2>
+            <p>Have a question or a collaboration idea? Drop us a line.</p>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="cta-btn">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>VOID</h3>
+                <p>Future Forms, Present Fashion.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe for the latest drops.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="cta-btn" style="width: 100%; padding: 0.5rem; font-size: 0.9rem;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 VOID. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <div id="product-detail">
+        <div class="product-detail-content">
+            <button class="close-detail">&times;</button>
+            <div class="product-viewer-container">
+                <img id="product-viewer" src="" alt="Product image">
+            </div>
+            <div class="product-info">
+                <h2 id="detail-name"></h2>
+                <p id="detail-price"></p>
+                <div class="selectors">
+                    <div class="size-selector">
+                        <label for="size">Size:</label>
+                        <select id="size">
+                            <option style="color:black">S</option>
+                            <option style="color:black">M</option>
+                            <option style="color:black">L</option>
+                            <option style="color:black">XL</option>
+                        </select>
+                    </div>
+                    <div class="color-selector">
+                        <label for="color">Color:</label>
+                        <div id="detail-colors"></div>
+                    </div>
+                </div>
+                <p id="detail-desc"></p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart">
+        <div class="cart-panel">
+            <button class="close-cart">&times;</button>
+            <h2>Your Cart</h2>
+            <div class="cart-items">
+                <!-- Cart items will be injected by JavaScript -->
+            </div>
+            <div class="cart-summary">
+                <p>Total: <span class="total-price">$0.00</span></p>
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="scroll-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

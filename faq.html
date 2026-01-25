@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Void - FAQ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Simple inline styles for FAQ specific layout */
+        .faq-container {
+            max-width: 800px;
+            margin: 120px auto 60px;
+            padding: 0 20px;
+        }
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .faq-item h3 {
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .faq-item p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">VOID</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#shop" class="nav-link">Shop</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="faq.html" class="nav-link active">FAQ</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 6.414L.757 3.172l1.415-1.415L5.414 5h15.242a1 1 0 0 1 .958 1.287l-2.4 8a1 1 0 0 1-.958.713H6v2h12v2H5a1 1 0 0 1-1-1V6.414zM5.5 21a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" fill="#fff"/></svg>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="hamburger">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="faq-container">
+            <h1 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;">Frequently Asked Questions</h1>
+            
+            <div class="faq-item">
+                <h3>How does the digital sizing work?</h3>
+                <p>Our clothing is designed with standard international sizing. For our digital-only items, files are compatible with most major 3D avatars and metaverse platforms.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Do you ship internationally?</h3>
+                <p>Yes, VOID ships to over 50 countries worldwide. Shipping times vary based on location, but typically range from 5-10 business days.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What is the return policy?</h3>
+                <p>Physical items can be returned within 30 days of receipt if they are unworn and in original packaging. Digital assets are non-refundable once downloaded.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Are the materials sustainable?</h3>
+                <p>Absolutely. We use a blend of recycled synthetics and organic cottons. Our goal is to minimize our carbon footprint while maximizing durability.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>VOID</h3>
+                <p>Future Forms, Present Fashion.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#shop">Shop</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe for the latest drops.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="cta-btn" style="width: 100%; padding: 0.5rem; font-size: 0.9rem;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 VOID. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <div id="cart">
+        <div class="cart-panel">
+            <button class="close-cart">&times;</button>
+            <h2>Your Cart</h2>
+            <div class="cart-items"></div>
+            <div class="cart-summary">
+                <p>Total: <span class="total-price">$0.00</span></p>
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="scroll-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

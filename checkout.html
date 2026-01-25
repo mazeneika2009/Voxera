@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Void - Checkout</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">VOID</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#shop" class="nav-link">Shop</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 6.414L.757 3.172l1.415-1.415L5.414 5h15.242a1 1 0 0 1 .958 1.287l-2.4 8a1 1 0 0 1-.958.713H6v2h12v2H5a1 1 0 0 1-1-1V6.414zM5.5 21a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" fill="#fff"/></svg>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="hamburger">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="checkout-page-container">
+            <h1>Checkout</h1>
+            <div class="checkout-grid">
+                <div class="checkout-form-section">
+                    <h2>Billing Details</h2>
+                    <form id="checkout-form">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="checkout-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>City</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Zip Code</label>
+                                <input type="text" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Country</label>
+                            <input type="text" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="checkout-summary-section">
+                    <h2>Your Order</h2>
+                    <div class="checkout-summary-items">
+                        <!-- Items injected by JS -->
+                    </div>
+                    <div class="checkout-total">
+                        <h3>Total</h3>
+                        <h3 class="checkout-total-price">$0.00</h3>
+                    </div>
+                    <button id="place-order-btn" class="cta-btn" style="width: 100%; margin-top: 20px;">Proceed to Payment</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>VOID</h3>
+                <p>Future Forms, Present Fashion.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#shop">Shop</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 VOID. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Hidden Cart Sidebar for JS compatibility -->
+    <div id="cart" style="display:none;">
+        <div class="cart-items"></div>
+        <button class="checkout-btn"></button>
+        <span class="total-price"></span>
+        <div class="cart-count"></div>
+        <div class="cart-icon"></div>
+        <button class="close-cart"></button>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-payment-modal">&times;</span>
+            <h2>Payment Details</h2>
+            
+            <div class="payment-form">
+                <div class="form-group">
+                    <label>Card Number</label>
+                    <div class="input-icon-wrap">
+                        <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxlength="19">
+                        <i class="far fa-credit-card" id="card-icon"></i>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Expiry Date</label>
+                        <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5">
+                    </div>
+                    <div class="form-group">
+                        <label>CVC</label>
+                        <input type="text" id="card-cvc" placeholder="123" maxlength="4">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Cardholder Name</label>
+                    <input type="text" id="card-name" placeholder="Name on Card">
+                </div>
+            </div>
+
+            <div style="margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 4px;">
+                <p style="font-size: 1.2rem;">Total Amount: <span id="modal-total-price" style="color: var(--accent-color); font-weight: bold;">$0.00</span></p>
+            </div>
+            <button id="confirm-payment-btn" class="cta-btn" style="width: 100%;">Pay Now</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
