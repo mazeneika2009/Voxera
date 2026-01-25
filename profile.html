@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Void - My Profile</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">VOID</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#shop" class="nav-link">Shop</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="#" class="user-icon" title="Login / Sign Up">
+                    <i class="far fa-user"></i>
+                </a>
+                <div class="cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 6.414L.757 3.172l1.415-1.415L5.414 5h15.242a1 1 0 0 1 .958 1.287l-2.4 8a1 1 0 0 1-.958.713H6v2h12v2H5a1 1 0 0 1-1-1V6.414zM5.5 21a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="hamburger">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="profile-container">
+            <h1 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;">My Profile</h1>
+            
+            <div id="profile-content">
+                <div class="profile-wrapper">
+                    <!-- Sidebar -->
+                    <aside class="profile-sidebar">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <button id="edit-profile-btn" class="cta-btn" style="width: 100%; margin-bottom: 1.5rem; background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); font-size: 0.9rem; padding: 0.5rem;">Edit Profile</button>
+                        <h2 id="sidebar-name" style="font-size: 1.5rem; margin-bottom: 0.5rem;">User Name</h2>
+                        <p id="sidebar-email" style="color: var(--secondary-color); font-size: 0.9rem;">user@example.com</p>
+                        
+                        <div class="sidebar-menu">
+                            <button class="menu-btn active" data-tab="info"><i class="fas fa-id-card" style="margin-right: 10px;"></i> Personal Info</button>
+                            <button class="menu-btn" data-tab="orders"><i class="fas fa-box-open" style="margin-right: 10px;"></i> My Orders</button>
+                        </div>
+                        
+                        <button id="logout-btn" class="cta-btn" style="width: 100%; margin-top: 2rem;">Sign Out</button>
+                    </aside>
+                    
+                    <!-- Main Content -->
+                    <div class="profile-content-area">
+                        <!-- Personal Info Tab -->
+                        <div id="tab-info" class="profile-tab active">
+                            <h3 style="margin-bottom: 2rem; border-bottom: 1px solid var(--accent-color); padding-bottom: 10px; display: inline-block;">Personal Information</h3>
+                            
+                            <div class="info-row">
+                                <div class="info-group">
+                                    <label>Full Name</label>
+                                    <p id="profile-fullname">-</p>
+                                </div>
+                                <div class="info-group">
+                                    <label>Email Address</label>
+                                    <p id="profile-email-display">-</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-row">
+                                <div class="info-group">
+                                    <label>Phone Number</label>
+                                    <p id="profile-phone">Not provided</p>
+                                </div>
+                                <div class="info-group">
+                                    <label>Shipping Address</label>
+                                    <p id="profile-address">Not provided</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-row" style="border-bottom: none;">
+                                <div class="info-group">
+                                    <label>Member Since</label>
+                                    <p id="profile-joined">January 2024</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Orders Tab -->
+                        <div id="tab-orders" class="profile-tab">
+                            <h3 style="margin-bottom: 2rem; border-bottom: 1px solid var(--accent-color); padding-bottom: 10px; display: inline-block;">Order History</h3>
+                            <div id="order-history-container">
+                                <!-- Orders injected by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="login-prompt">
+                <h2>Please Log In</h2>
+                <p>You must be logged in to view your profile.</p>
+                <a href="index.html" class="cta-btn">Back to Home</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>VOID</h3>
+                <p>Future Forms, Present Fashion.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#shop">Shop</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 VOID. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modals and Cart -->
+    <div id="cart">
+        <div class="cart-panel">
+            <button class="close-cart">&times;</button>
+            <h2>Your Cart</h2>
+            <div class="cart-items"></div>
+            <div class="cart-summary">
+                <p>Total: <span class="total-price">$0.00</span></p>
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal close-auth">&times;</span>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-target="login-form">Login</button>
+                <button class="auth-tab" data-target="signup-form">Sign Up</button>
+            </div>
+            <form id="login-form" class="auth-form active">
+                <div class="form-group"><label>Email Address</label><input type="email" id="login-email" required></div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="input-icon-wrap">
+                        <input type="password" id="login-pass" required>
+                        <i class="far fa-eye password-toggle" data-target="login-pass"></i>
+                    </div>
+                </div>
+                <div style="text-align: right; margin-bottom: 15px;">
+                    <a href="#" id="forgot-pass-link" style="color: var(--accent-color); font-size: 0.9rem; text-decoration: none;">Forgot Password?</a>
+                </div>
+                <button type="submit" class="cta-btn" style="width: 100%;">Login</button>
+            </form>
+            <form id="signup-form" class="auth-form">
+                <div class="form-group"><label>Full Name</label><input type="text" id="signup-name" required></div>
+                <div class="form-group"><label>Email Address</label><input type="email" id="signup-email" required></div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="input-icon-wrap">
+                        <input type="password" id="signup-pass" required>
+                        <i class="far fa-eye password-toggle" data-target="signup-pass"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Profile Photo (Optional)</label>
+                    <input type="file" id="signup-avatar" accept="image/*">
+                </div>
+                <button type="submit" class="cta-btn" style="width: 100%;">Create Account</button>
+            </form>
+            <form id="forgot-pass-form" class="auth-form">
+                <h3 style="margin-bottom: 1.5rem; text-align: center;">Reset Password</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--secondary-color); text-align: center; font-size: 0.9rem;">Enter your email address and we'll send you a link to reset your password.</p>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="forgot-email" required>
+                </div>
+                <button type="submit" class="cta-btn" style="width: 100%;">Send Reset Link</button>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <a href="#" id="back-to-login" style="color: var(--secondary-color); font-size: 0.9rem; text-decoration: none;">Back to Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="edit-profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-edit-profile">&times;</span>
+            <h2>Edit Profile</h2>
+            <form id="edit-profile-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="edit-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="edit-phone" placeholder="+1 234 567 8900">
+                </div>
+                <div class="form-group">
+                    <label>Shipping Address</label>
+                    <input type="text" id="edit-address" placeholder="123 Street Name, City, Country">
+                </div>
+                <div class="form-group">
+                    <label>Profile Photo (URL)</label>
+                    <input type="text" id="edit-avatar-url" placeholder="https://example.com/photo.jpg">
+                </div>
+                <div class="form-group">
+                    <label>Or Upload Photo</label>
+                    <input type="file" id="edit-avatar-file" accept="image/*">
+                </div>
+                <button type="submit" class="cta-btn" style="width: 100%;">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

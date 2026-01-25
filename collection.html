@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Void - Collection</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 <body>
     <header>
@@ -19,6 +19,9 @@
                 <li><a href="faq.html" class="nav-link">FAQ</a></li>
             </ul>
             <div class="nav-right">
+                <a href="#" class="user-icon" title="Login / Sign Up">
+                    <i class="far fa-user"></i>
+                </a>
                 <div class="cart-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 6.414L.757 3.172l1.415-1.415L5.414 5h15.242a1 1 0 0 1 .958 1.287l-2.4 8a1 1 0 0 1-.958.713H6v2h12v2H5a1 1 0 0 1-1-1V6.414zM5.5 21a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" fill="#fff"/></svg>
                     <span class="cart-count">0</span>
@@ -34,21 +37,20 @@
 
     <main>
         <section id="shop" style="padding-top: 120px; min-height: 80vh;">
-            <h2>Collection</h2>
-            <div id="collection-features"></div>
-            <div class="search-container" style="max-width: 800px; margin: 0 auto 2rem; padding: 0 20px; display: flex; gap: 1rem; flex-wrap: wrap;">
-                <input type="text" id="shop-search" placeholder="Search products..." style="flex: 1; min-width: 200px; padding: 1rem; background: #1a1a1a; border: 1px solid #2a2a2a; color: #fff; border-radius: 5px; font-size: 1rem;">
-                <select id="shop-sort" style="padding: 1rem; background: #1a1a1a; border: 1px solid #2a2a2a; color: #fff; border-radius: 5px; font-size: 1rem; cursor: pointer;">
-                    <option value="default">Sort by</option>
+            <div class="shop-controls" style="max-width: 1200px; margin: 0 auto 2rem; display: flex; justify-content: space-between; padding: 0 20px; flex-wrap: wrap; gap: 1rem;">
+                <input type="text" id="shop-search" placeholder="Search products..." style="max-width: 300px;">
+                <select id="shop-sort" style="max-width: 200px;">
+                    <option value="default">Sort by: Default</option>
                     <option value="price-asc">Price: Low to High</option>
                     <option value="price-desc">Price: High to Low</option>
                 </select>
             </div>
-            <div class="product-grid">
-                <!-- Products will be injected by JavaScript -->
-            </div>
-            <div class="load-more-container" style="text-align: center; margin-top: 2rem;">
-                <button id="load-more-btn" class="cta-btn" style="display: none;">Load More</button>
+
+            <h2>All Products</h2>
+            <div id="collection-features"></div>
+            <div class="product-grid"></div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <button id="load-more-btn" class="cta-btn">Load More</button>
             </div>
         </section>
     </main>
@@ -78,20 +80,13 @@
                     <a href="#"><i class="fab fa-pinterest"></i></a>
                 </div>
             </div>
-            <div class="footer-section">
-                <h3>Newsletter</h3>
-                <p>Subscribe for the latest drops.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit" class="cta-btn" style="width: 100%; padding: 0.5rem; font-size: 0.9rem;">Subscribe</button>
-                </form>
-            </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2024 VOID. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <!-- Product Detail Modal -->
     <div id="product-detail">
         <div class="product-detail-content">
             <button class="close-detail">&times;</button>
@@ -104,7 +99,7 @@
                 <div class="selectors">
                     <div class="size-selector">
                         <label for="size">Size:</label>
-                        <select id="size" >
+                        <select id="size">
                             <option style="color:black">S</option>
                             <option style="color:black">M</option>
                             <option style="color:black">L</option>
@@ -122,6 +117,7 @@
         </div>
     </div>
 
+    <!-- Cart -->
     <div id="cart">
         <div class="cart-panel">
             <button class="close-cart">&times;</button>
@@ -131,6 +127,37 @@
                 <p>Total: <span class="total-price">$0.00</span></p>
                 <button class="checkout-btn">Checkout</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal close-auth">&times;</span>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-target="login-form">Login</button>
+                <button class="auth-tab" data-target="signup-form">Sign Up</button>
+            </div>
+            <form id="login-form" class="auth-form active">
+                <div class="form-group"><label>Email Address</label><input type="email" id="login-email" required></div>
+                <div class="form-group"><label>Password</label><div class="input-icon-wrap"><input type="password" id="login-pass" required><i class="far fa-eye password-toggle" data-target="login-pass"></i></div></div>
+                <div style="text-align: right; margin-bottom: 15px;"><a href="#" id="forgot-pass-link" style="color: var(--accent-color); font-size: 0.9rem; text-decoration: none;">Forgot Password?</a></div>
+                <button type="submit" class="cta-btn" style="width: 100%;">Login</button>
+            </form>
+            <form id="signup-form" class="auth-form">
+                <div class="form-group"><label>Full Name</label><input type="text" id="signup-name" required></div>
+                <div class="form-group"><label>Email Address</label><input type="email" id="signup-email" required></div>
+                <div class="form-group"><label>Password</label><div class="input-icon-wrap"><input type="password" id="signup-pass" required><i class="far fa-eye password-toggle" data-target="signup-pass"></i></div></div>
+                <div class="form-group"><label>Profile Photo (Optional)</label><input type="file" id="signup-avatar" accept="image/*"></div>
+                <button type="submit" class="cta-btn" style="width: 100%;">Create Account</button>
+            </form>
+            <form id="forgot-pass-form" class="auth-form">
+                <h3 style="margin-bottom: 1.5rem; text-align: center;">Reset Password</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--secondary-color); text-align: center; font-size: 0.9rem;">Enter your email address and we'll send you a link to reset your password.</p>
+                <div class="form-group"><label>Email Address</label><input type="email" id="forgot-email" required></div>
+                <button type="submit" class="cta-btn" style="width: 100%;">Send Reset Link</button>
+                <div style="text-align: center; margin-top: 1rem;"><a href="#" id="back-to-login" style="color: var(--secondary-color); font-size: 0.9rem; text-decoration: none;">Back to Login</a></div>
+            </form>
         </div>
     </div>
 

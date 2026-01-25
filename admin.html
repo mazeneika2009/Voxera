@@ -46,7 +46,10 @@
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" id="admin-pass" required>
+                    <div class="input-icon-wrap">
+                        <input type="password" id="admin-pass" required>
+                        <i class="far fa-eye password-toggle" data-target="admin-pass"></i>
+                    </div>
                 </div>
                 <button type="submit" class="cta-btn" style="width: 100%;">Login</button>
             </form>
@@ -125,33 +128,37 @@
                     <input type="text" id="p-name" required>
                 </div>
 
-                <div class="form-group">
-                    <label>Price ($)</label>
-                    <input type="number" id="p-price" step="0.01" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Price ($)</label>
+                        <input type="number" id="p-price" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="p-category" required>
+                            <option value="Street">Street</option>
+                            <option value="Minimalist">Minimalist</option>
+                            <option value="Cybernetic">Cybernetic</option>
+                            <option value="Neon">Neon</option>
+                            <option value="Techwear">Techwear</option>
+                            <option value="Avant-Garde">Avant-Garde</option>
+                            <option value="Industrial">Industrial</option>
+                            <option value="Monochrome">Monochrome</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Category</label>
-                    <select id="p-category" required>
-                        <option value="Street">Street</option>
-                        <option value="Minimalist">Minimalist</option>
-                        <option value="Cybernetic">Cybernetic</option>
-                        <option value="Neon">Neon</option>
-                        <option value="Techwear">Techwear</option>
-                        <option value="Avant-Garde">Avant-Garde</option>
-                        <option value="Industrial">Industrial</option>
-                        <option value="Monochrome">Monochrome</option>
-                    </select>
-                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Colors (Hex codes, comma separated)</label>
+                        <input type="text" id="p-colors" placeholder="#000000, #ffffff">
+                    </div>
 
-                <div class="form-group">
-                    <label>Colors (Hex codes, comma separated)</label>
-                    <input type="text" id="p-colors" placeholder="#000000, #ffffff">
-                </div>
-
-                <div class="form-group">
-                    <label>Sizes (Comma separated)</label>
-                    <input type="text" id="p-sizes" placeholder="S, M, L, XL">
+                    <div class="form-group">
+                        <label>Sizes (Comma separated)</label>
+                        <input type="text" id="p-sizes" placeholder="S, M, L, XL">
+                    </div>
                 </div>
 
                 <div class="form-group" style="display: flex; align-items: center; gap: 10px;">

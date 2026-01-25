@@ -47,6 +47,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Password Toggle
+    document.querySelectorAll('.password-toggle').forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const targetId = toggle.getAttribute('data-target');
+            const input = document.getElementById(targetId);
+            if (input) {
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    toggle.classList.remove('fa-eye');
+                    toggle.classList.add('fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    toggle.classList.remove('fa-eye-slash');
+                    toggle.classList.add('fa-eye');
+                }
+            }
+        });
+    });
+
     function saveProducts() {
         try {
             localStorage.setItem('void_products', JSON.stringify(products));
@@ -221,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Scroll Animations -----------------------------------------------------
     const observerOptions = {
-        threshold: 0.1,
+        threshold: 0.2,
         rootMargin: "0px 0px -50px 0px"
     };
 
