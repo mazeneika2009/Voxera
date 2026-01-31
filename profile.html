@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Void - My Profile</title>
+    <title>Voxera - My Profile</title>
+    <link rel="icon" type="image/x-icon" href="asset/image/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Genos:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">VOID</div>
+            <div class="logo">Voxera</div>
             <ul class="nav-links">
                 <li><a href="index.html#home" class="nav-link">Home</a></li>
                 <li><a href="index.html#shop" class="nav-link">Shop</a></li>
@@ -19,6 +23,10 @@
                 <li><a href="faq.html" class="nav-link">FAQ</a></li>
             </ul>
             <div class="nav-right">
+                <div class="nav-controls">
+                    <button id="theme-toggle" class="control-btn" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+                    <button id="lang-toggle" class="control-btn" aria-label="Switch Language">AR</button>
+                </div>
                 <a href="#" class="user-icon" title="Login / Sign Up">
                     <i class="far fa-user"></i>
                 </a>
@@ -37,7 +45,7 @@
 
     <main>
         <section class="profile-container">
-            <h1 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;">My Profile</h1>
+            <h1 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;" data-i18n="myProfile">My Profile</h1>
             
             <div id="profile-content">
                 <div class="profile-wrapper">
@@ -46,49 +54,49 @@
                         <div class="profile-avatar">
                             <i class="fas fa-user-circle"></i>
                         </div>
-                        <button id="edit-profile-btn" class="cta-btn" style="width: 100%; margin-bottom: 1.5rem; background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); font-size: 0.9rem; padding: 0.5rem;">Edit Profile</button>
+                        <button id="edit-profile-btn" class="cta-btn" style="width: 100%; margin-bottom: 1.5rem; background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); font-size: 0.9rem; padding: 0.5rem;" data-i18n="editProfile">Edit Profile</button>
                         <h2 id="sidebar-name" style="font-size: 1.5rem; margin-bottom: 0.5rem;">User Name</h2>
                         <p id="sidebar-email" style="color: var(--secondary-color); font-size: 0.9rem;">user@example.com</p>
                         
                         <div class="sidebar-menu">
-                            <button class="menu-btn active" data-tab="info"><i class="fas fa-id-card" style="margin-right: 10px;"></i> Personal Info</button>
-                            <button class="menu-btn" data-tab="orders"><i class="fas fa-box-open" style="margin-right: 10px;"></i> My Orders</button>
+                            <button class="menu-btn active" data-tab="info"><i class="fas fa-id-card" style="margin-right: 10px;"></i> <span data-i18n="personalInfo">Personal Info</span></button>
+                            <button class="menu-btn" data-tab="orders"><i class="fas fa-box-open" style="margin-right: 10px;"></i> <span data-i18n="myOrders">My Orders</span></button>
                         </div>
                         
-                        <button id="logout-btn" class="cta-btn" style="width: 100%; margin-top: 2rem;">Sign Out</button>
+                        <button id="logout-btn" class="cta-btn" style="width: 100%; margin-top: 2rem;" data-i18n="signOut">Sign Out</button>
                     </aside>
                     
                     <!-- Main Content -->
                     <div class="profile-content-area">
                         <!-- Personal Info Tab -->
                         <div id="tab-info" class="profile-tab active">
-                            <h3 style="margin-bottom: 2rem; border-bottom: 1px solid var(--accent-color); padding-bottom: 10px; display: inline-block;">Personal Information</h3>
+                            <h3 style="margin-bottom: 2rem; border-bottom: 1px solid var(--accent-color); padding-bottom: 10px; display: inline-block;" data-i18n="personalInfo">Personal Information</h3>
                             
                             <div class="info-row">
                                 <div class="info-group">
-                                    <label>Full Name</label>
+                                    <label data-i18n="fullName">Full Name</label>
                                     <p id="profile-fullname">-</p>
                                 </div>
                                 <div class="info-group">
-                                    <label>Email Address</label>
+                                    <label data-i18n="emailAddr">Email Address</label>
                                     <p id="profile-email-display">-</p>
                                 </div>
                             </div>
                             
                             <div class="info-row">
                                 <div class="info-group">
-                                    <label>Phone Number</label>
+                                    <label data-i18n="phoneNumber">Phone Number</label>
                                     <p id="profile-phone">Not provided</p>
                                 </div>
                                 <div class="info-group">
-                                    <label>Shipping Address</label>
+                                    <label data-i18n="shippingAddress">Shipping Address</label>
                                     <p id="profile-address">Not provided</p>
                                 </div>
                             </div>
                             
                             <div class="info-row" style="border-bottom: none;">
                                 <div class="info-group">
-                                    <label>Member Since</label>
+                                    <label data-i18n="memberSince">Member Since</label>
                                     <p id="profile-joined">January 2024</p>
                                 </div>
                             </div>
@@ -96,7 +104,7 @@
 
                         <!-- Orders Tab -->
                         <div id="tab-orders" class="profile-tab">
-                            <h3 style="margin-bottom: 2rem; border-bottom: 1px solid var(--accent-color); padding-bottom: 10px; display: inline-block;">Order History</h3>
+                            <h3 style="margin-bottom: 2rem; border-bottom: 1px solid var(--accent-color); padding-bottom: 10px; display: inline-block;" data-i18n="orderHistory">Order History</h3>
                             <div id="order-history-container">
                                 <!-- Orders injected by JS -->
                             </div>
@@ -106,9 +114,9 @@
             </div>
 
             <div id="login-prompt">
-                <h2>Please Log In</h2>
-                <p>You must be logged in to view your profile.</p>
-                <a href="index.html" class="cta-btn">Back to Home</a>
+                <h2 data-i18n="loginPromptTitle">Please Log In</h2>
+                <p data-i18n="loginPromptText">You must be logged in to view your profile.</p>
+                <a href="index.html" class="cta-btn" data-i18n="backToHome">Back to Home</a>
             </div>
         </section>
     </main>
@@ -116,22 +124,22 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>VOID</h3>
-                <p>Future Forms, Present Fashion.</p>
+                <h3 data-i18n="heroTitle">Voxera</h3>
+                <p data-i18n="footerMotto">Future Forms, Present Fashion.</p>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
+                <h3 data-i18n="quickLinks">Quick Links</h3>
                 <ul>
-                    <li><a href="index.html#home">Home</a></li>
-                    <li><a href="index.html#shop">Shop</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="index.html#home" data-i18n="home">Home</a></li>
+                    <li><a href="index.html#shop" data-i18n="shop">Shop</a></li>
+                    <li><a href="index.html#about" data-i18n="about">About</a></li>
+                    <li><a href="index.html#contact" data-i18n="contact">Contact</a></li>
+                    <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 VOID. All Rights Reserved.</p>
+            <p>&copy; 2024 Voxera. <span data-i18n="allRightsReserved">All Rights Reserved.</span></p>
         </div>
     </footer>
 
@@ -139,11 +147,11 @@
     <div id="cart">
         <div class="cart-panel">
             <button class="close-cart">&times;</button>
-            <h2>Your Cart</h2>
+            <h2 data-i18n="cartTitle">Your Cart</h2>
             <div class="cart-items"></div>
             <div class="cart-summary">
-                <p>Total: <span class="total-price">$0.00</span></p>
-                <button class="checkout-btn">Checkout</button>
+                <p><span data-i18n="total">Total</span>: <span class="total-price">$0.00</span></p>
+                <button class="checkout-btn" data-i18n="checkout">Checkout</button>
             </div>
         </div>
     </div>
@@ -151,49 +159,49 @@
         <div class="modal-content">
             <span class="close-modal close-auth">&times;</span>
             <div class="auth-tabs">
-                <button class="auth-tab active" data-target="login-form">Login</button>
-                <button class="auth-tab" data-target="signup-form">Sign Up</button>
+                <button class="auth-tab active" data-target="login-form" data-i18n="login">Login</button>
+                <button class="auth-tab" data-target="signup-form" data-i18n="signUp">Sign Up</button>
             </div>
             <form id="login-form" class="auth-form active">
-                <div class="form-group"><label>Email Address</label><input type="email" id="login-email" required></div>
+                <div class="form-group"><label data-i18n="emailAddr">Email Address</label><input type="email" id="login-email" required></div>
                 <div class="form-group">
-                    <label>Password</label>
+                    <label data-i18n="password">Password</label>
                     <div class="input-icon-wrap">
                         <input type="password" id="login-pass" required>
                         <i class="far fa-eye password-toggle" data-target="login-pass"></i>
                     </div>
                 </div>
                 <div style="text-align: right; margin-bottom: 15px;">
-                    <a href="#" id="forgot-pass-link" style="color: var(--accent-color); font-size: 0.9rem; text-decoration: none;">Forgot Password?</a>
+                    <a href="#" id="forgot-pass-link" style="color: var(--accent-color); font-size: 0.9rem; text-decoration: none;" data-i18n="forgotPassword">Forgot Password?</a>
                 </div>
-                <button type="submit" class="cta-btn" style="width: 100%;">Login</button>
+                <button type="submit" class="cta-btn" style="width: 100%;" data-i18n="login">Login</button>
             </form>
             <form id="signup-form" class="auth-form">
-                <div class="form-group"><label>Full Name</label><input type="text" id="signup-name" required></div>
-                <div class="form-group"><label>Email Address</label><input type="email" id="signup-email" required></div>
+                <div class="form-group"><label data-i18n="fullName">Full Name</label><input type="text" id="signup-name" required></div>
+                <div class="form-group"><label data-i18n="emailAddr">Email Address</label><input type="email" id="signup-email" required></div>
                 <div class="form-group">
-                    <label>Password</label>
+                    <label data-i18n="password">Password</label>
                     <div class="input-icon-wrap">
                         <input type="password" id="signup-pass" required>
                         <i class="far fa-eye password-toggle" data-target="signup-pass"></i>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Profile Photo (Optional)</label>
+                    <label data-i18n="profilePhotoOptional">Profile Photo (Optional)</label>
                     <input type="file" id="signup-avatar" accept="image/*">
                 </div>
-                <button type="submit" class="cta-btn" style="width: 100%;">Create Account</button>
+                <button type="submit" class="cta-btn" style="width: 100%;" data-i18n="createAccount">Create Account</button>
             </form>
             <form id="forgot-pass-form" class="auth-form">
-                <h3 style="margin-bottom: 1.5rem; text-align: center;">Reset Password</h3>
-                <p style="margin-bottom: 1.5rem; color: var(--secondary-color); text-align: center; font-size: 0.9rem;">Enter your email address and we'll send you a link to reset your password.</p>
+                <h3 style="margin-bottom: 1.5rem; text-align: center;" data-i18n="resetPassword">Reset Password</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--secondary-color); text-align: center; font-size: 0.9rem;" data-i18n="enterEmailReset">Enter your email address and we'll send you a link to reset your password.</p>
                 <div class="form-group">
-                    <label>Email Address</label>
+                    <label data-i18n="emailAddr">Email Address</label>
                     <input type="email" id="forgot-email" required>
                 </div>
-                <button type="submit" class="cta-btn" style="width: 100%;">Send Reset Link</button>
+                <button type="submit" class="cta-btn" style="width: 100%;" data-i18n="sendResetLink">Send Reset Link</button>
                 <div style="text-align: center; margin-top: 1rem;">
-                    <a href="#" id="back-to-login" style="color: var(--secondary-color); font-size: 0.9rem; text-decoration: none;">Back to Login</a>
+                    <a href="#" id="back-to-login" style="color: var(--secondary-color); font-size: 0.9rem; text-decoration: none;" data-i18n="backToLogin">Back to Login</a>
                 </div>
             </form>
         </div>
@@ -203,35 +211,35 @@
     <div id="edit-profile-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal" id="close-edit-profile">&times;</span>
-            <h2>Edit Profile</h2>
+            <h2 data-i18n="editProfile">Edit Profile</h2>
             <form id="edit-profile-form">
                 <div class="form-group">
-                    <label>Full Name</label>
+                    <label data-i18n="fullName">Full Name</label>
                     <input type="text" id="edit-name" required>
                 </div>
                 <div class="form-group">
-                    <label>Phone Number</label>
+                    <label data-i18n="phoneNumber">Phone Number</label>
                     <input type="tel" id="edit-phone" placeholder="+1 234 567 8900">
                 </div>
                 <div class="form-group">
-                    <label>Shipping Address</label>
+                    <label data-i18n="shippingAddress">Shipping Address</label>
                     <input type="text" id="edit-address" placeholder="123 Street Name, City, Country">
                 </div>
                 <div class="form-group">
-                    <label>Profile Photo (URL)</label>
+                    <label data-i18n="profilePhotoUrl">Profile Photo (URL)</label>
                     <input type="text" id="edit-avatar-url" placeholder="https://example.com/photo.jpg">
                 </div>
                 <div class="form-group">
-                    <label>Or Upload Photo</label>
+                    <label data-i18n="orUploadPhoto">Or Upload Photo</label>
                     <input type="file" id="edit-avatar-file" accept="image/*">
                 </div>
-                <button type="submit" class="cta-btn" style="width: 100%;">Save Changes</button>
+                <button type="submit" class="cta-btn" style="width: 100%;" data-i18n="saveChanges">Save Changes</button>
             </form>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

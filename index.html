@@ -1,360 +1,548 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Void - 3D Clothing Brand</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voxera - Clothing Brand</title>
+    <link rel="icon" type="image/x-icon" href="asset/image/favicon.ico">
+    <!-- PERFORMANCE: Preconnect to third-party origins -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <!--
+        PERFORMANCE OPTIMIZATION: Critical CSS
+        In a production build, the CSS for above-the-fold content would be inlined here.
+        The main stylesheet is loaded asynchronously to prevent render-blocking.
+    -->
+    <link
+      rel="stylesheet"
+      href="css/style.css"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript><link rel="stylesheet" href="css/style.css" /></noscript>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Genos:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header>
-        <nav>
-            <div class="logo">VOID</div>
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#shop" class="nav-link">Shop</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-                <li><a href="faq.html" class="nav-link">FAQ</a></li>
-            </ul>
-            <div class="nav-right">
-                <a href="#" class="user-icon" title="Login / Sign Up">
-                    <i class="far fa-user"></i>
-                </a>
-                <div class="cart-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 6.414L.757 3.172l1.415-1.415L5.414 5h15.242a1 1 0 0 1 .958 1.287l-2.4 8a1 1 0 0 1-.958.713H6v2h12v2H5a1 1 0 0 1-1-1V6.414zM5.5 21a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" fill="#fff"/></svg>
-                    <span class="cart-count">0</span>
-                </div>
-                <div class="hamburger">
-                    <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
-                </div>
-            </div>
-        </nav>
+      <nav>
+        <div class="logo">Voxera</div>
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link" data-i18n="home">Home</a></li>
+          <li><a href="#shop" class="nav-link" data-i18n="shop">Shop</a></li>
+          <li><a href="#about" class="nav-link" data-i18n="about">About</a></li>
+          <li>
+            <a href="#contact" class="nav-link" data-i18n="contact">Contact</a>
+          </li>
+          <li><a href="faq.html" class="nav-link" data-i18n="faq">FAQ</a></li>
+        </ul>
+        <div class="nav-right">
+          <div class="nav-controls">
+            <button
+              id="theme-toggle"
+              class="control-btn"
+              aria-label="Toggle Theme"
+            >
+              <i class="fas fa-moon"></i>
+            </button>
+            <button
+              id="lang-toggle"
+              class="control-btn"
+              aria-label="Switch Language"
+            >
+              AR
+            </button>
+          </div>
+          <a href="profile.html" class="user-icon" title="Login / Sign Up">
+            <i class="far fa-user"></i>
+          </a>
+          <div class="cart-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path
+                d="M4 6.414L.757 3.172l1.415-1.415L5.414 5h15.242a1 1 0 0 1 .958 1.287l-2.4 8a1 1 0 0 1-.958.713H6v2h12v2H5a1 1 0 0 1-1-1V6.414zM5.5 21a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+                fill="#fff"
+              />
+            </svg>
+            <span class="cart-count">0</span>
+          </div>
+          <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <main>
-        <section id="home">
-            <div class="hero-text">
-                <h1>FUTURE FORMS</h1>
-                <p>Explore the intersection of digital art and apparel.</p>
-                <a href="#shop" class="cta-btn">Discover the Collection</a>
-            </div>
-        </section>
+      <section id="home">
+        
+        <div class="hero-text">
+          <h1 data-i18n="heroTitle">Voxera</h1>
+          <p data-i18n="heroSubtitle">
+            Clothing as structure. Style as evolution.
+          </p>
+          <a href="#shop" class="cta-btn pulse" data-i18n="discover"
+            >Discover More</a>
+        </div>
+        <div class="img-container">
+          <div class="image-stack">
+            <img
+              src="asset/image/home1.png"
+              class="img img-1"
+              alt="Voxera Home 1"
+            />
+            <img
+              src="asset/image/home3.png"
+              class="img img-3"
+              alt="Voxera Home 3"
+            />
+         </div>
+        </div>
+      </section>
+      <section id="">
+        <div></div>
+      </section>
 
-        <section id="new-arrivals" class="text-center">
-            <h2>New Arrivals</h2>
-            <div class="collection-slider-container">
-                <button type="button" class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                <div class="collection-slider">
-                    <!-- Products injected by JS -->
-                </div>
-                <button type="button" class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-            </div>
-        </section>
+      <section id="new-arrivals" class="text-center">
+        <h2 data-i18n="newArrivals">New Arrivals</h2>
+        <div class="collection-slider-container">
+          <button type="button" class="slider-btn prev-btn">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="collection-slider"></div>
+          <button type="button" class="slider-btn next-btn">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </section>
 
-        <section id="lookbook">
-            <h2>Style Lookbook</h2>
-            <div class="lookbook-grid">
-                <div class="lookbook-item">
-                    <img src="https://images.unsplash.com/photo-1693443688057-85f57b872a3c?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Lookbook Style 1">
-                    <div class="lookbook-caption">
-                        <h3>Urban Explorer</h3>
-                        <p>Combining functional techwear with minimalist aesthetics for the modern cityscape.</p>
-                    </div>
-                </div>
-                <div class="lookbook-item">
-                    <img src="https://images.unsplash.com/photo-1516082669438-2d2bb5082626?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Lookbook Style 2">
-                    <div class="lookbook-caption">
-                        <h3>Digital Nomad</h3>
-                        <p>Comfort and style for a life on the move. Versatile pieces that adapt to any environment.</p>
-                    </div>
-                </div>
-                <div class="lookbook-item">
-                    <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?w=500&auto=format&fit=crop&q=60" alt="Lookbook Style 3">
-                    <div class="lookbook-caption">
-                        <h3>Neon Nights</h3>
-                        <p>Vibrant hues designed for the nocturnal wanderer in the digital metropolis.</p>
-                    </div>
-                </div>
-                <div class="lookbook-item">
-                    <img src="https://images.unsplash.com/photo-1485230405346-71acb9518d9c?w=500&auto=format&fit=crop&q=60" alt="Lookbook Style 4">
-                    <div class="lookbook-caption">
-                        <h3>Zero Gravity</h3>
-                        <p>Lightweight fabrics engineered for maximum mobility and comfort.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <section id="lookbook">
+        <h2 data-i18n="lookbook">Style Lookbook</h2>
+        <div class="lookbook-grid">
+          <figure class="lookbook-item">
+            <picture>
+              <source srcset="asset/image/4.jpg" type="image/webp" />
+              <img
+                src="asset/image/4.jpg"
+                alt="Lookbook Style 1"
+                width="684"
+                height="684"
+                loading="lazy"
+                decoding="async"
+                style="border-radius: 5%"
+              />
+            </picture>
+            <figcaption class="lookbook-caption">
+              <h3>Urban Explorer</h3>
+              <p>
+                Combining functional techwear with minimalist aesthetics for the
+                modern cityscape.
+              </p>
+            </figcaption>
+          </figure>
+          <figure class="lookbook-item">
+            <picture>
+              <source srcset="asset/image/5.jpg" type="image/webp" />
+              <img
+                src="asset/image/5.jpg"
+                alt="Lookbook Style 2"
+                width="684"
+                height="684"
+                loading="lazy"
+                decoding="async"
+                style="border-radius: 5%"
+              />
+            </picture>
+            <figcaption class="lookbook-caption">
+              <h3>Digital Nomad</h3>
+              <p>
+                Comfort and style for a life on the move. Versatile pieces that
+                adapt to any environment.
+              </p>
+            </figcaption>
+          </figure>
+          <figure class="lookbook-item">
+            <picture>
+              <source srcset="asset/image/7.jpg" type="image/webp" />
+              <img
+                src="asset/image/7.jpg"
+                alt="Lookbook Style 3"
+                width="684"
+                height="684"
+                loading="lazy"
+                decoding="async"
+                style="border-radius: 5%"
+              />
+            </picture>
+            <figcaption class="lookbook-caption">
+              <h3>Neon Nights</h3>
+              <p>
+                Vibrant hues designed for the nocturnal wanderer in the digital
+                metropolis.
+              </p>
+            </figcaption>
+          </figure>
+          <figure class="lookbook-item">
+            <picture>
+              <source srcset="asset/image/9.jpg" type="image/webp" />
+              <img
+                src="asset/image/9.jpg"
+                alt="Lookbook Style 4"
+                width="684"
+                height="684"
+                loading="lazy"
+                decoding="async"
+                style="border-radius: 5%"
+              />
+            </picture>
+            <figcaption class="lookbook-caption">
+              <h3>Zero Gravity</h3>
+              <p>
+                Lightweight fabrics engineered for maximum mobility and comfort.
+              </p>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
 
-        <section id="shop" class="text-center">
-            <h2>Collections</h2>
-            <div class="collection-slider-container">
-                <button type="button" class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                <div class="collection-slider">
-                    <div class="collection-card">
-                        <img src="https://images.unsplash.com/photo-1693443688057-85f57b872a3c?w=500" alt="Cybernetic">
-                        <div class="collection-info">
-                            <h3>Cybernetic</h3>
-                            <a href="collection.html?category=Cybernetic" class="collection-link">View</a>
-                        </div>
-                    </div>
-                    <div class="collection-card">
-                        <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500" alt="Minimalist">
-                        <div class="collection-info">
-                            <h3>Minimalist</h3>
-                            <a href="collection.html?category=Minimalist" class="collection-link">View</a>
-                        </div>
-                    </div>
-                    <div class="collection-card">
-                        <img src="https://images.unsplash.com/photo-1504194921103-f8b80cadd5e4?w=500&auto=format&fit=crop&q=60" alt="Industrial">
-                        <div class="collection-info">
-                            <h3>Industrial</h3>
-                            <a href="collection.html?category=Industrial" class="collection-link">View</a>
-                        </div>
-                    </div>
-                    <div class="collection-card">
-                        <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=500&auto=format&fit=crop&q=60" alt="Neon">
-                        <div class="collection-info">
-                            <h3>Neon</h3>
-                            <a href="collection.html?category=Neon" class="collection-link">View</a>
-                        </div>
-                    </div>
-                    <div class="collection-card">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60" alt="Avant-Garde">
-                        <div class="collection-info">
-                            <h3>Avant-Garde</h3>
-                            <a href="collection.html?category=Avant-Garde" class="collection-link">View</a>
-                        </div>
-                    </div>
-                    <div class="collection-card">
-                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=60" alt="Techwear">
-                        <div class="collection-info">
-                            <h3>Techwear</h3>
-                            <a href="collection.html?category=Techwear" class="collection-link">View</a>
-                        </div>
-                    </div>
-                    <div class="collection-card">
-                        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500&auto=format&fit=crop&q=60" alt="Monochrome">
-                        <div class="collection-info">
-                            <h3>Monochrome</h3>
-                            <a href="collection.html?category=Monochrome" class="collection-link">View</a>
-                        </div>
-                    </div>
-                    <div class="collection-card">
-                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500&auto=format&fit=crop&q=60" alt="Street">
-                        <div class="collection-info">
-                            <h3>Street</h3>
-                            <a href="collection.html?category=Street" class="collection-link">View</a>
-                        </div>
-                    </div>
-                </div>
-                <button type="button" class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-            </div>
-        </section>
+      <section id="shop" class="text-center">
+        <h2 data-i18n="collections">Collections</h2>
+        <div class="collection-slider-container">
+          <button type="button" class="slider-btn prev-btn">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="collection-slider">
+            <!-- Collection cards will be dynamically injected here by JavaScript -->
+          </div>
+          <button type="button" class="slider-btn next-btn">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </section>
 
-        <section id="about">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>ABOUT VOID</h2>
-                    <p>We are a collective of artists and designers exploring the boundaries of fashion in the digital age. Our work is a fusion of cutting-edge 3D design and high-quality apparel, creating pieces that are both art and clothing.</p>
-                    <p>Each item in our collection is meticulously crafted, from the initial concept in virtual space to the final physical product. We believe in sustainable practices and limited runs to ensure exclusivity and quality.</p>
-                </div>
-                <div class="about-image">
-                    
-                </div>
-            </div>
-        </section>
+      <section id="about">
+        <div class="about-content">
+          <div class="about-text">
+            <h2 data-i18n="aboutTitle">ABOUT Voxera</h2>
+            <p data-i18n="aboutText1">
+              Voxera is a fashion label built around form, fit, and expression.
+              We create contemporary garments that balance minimal aesthetics
+              with strong identity.
+            </p>
+            <p data-i18n="aboutText2">
+              Every piece is thoughtfully constructed using quality materials
+              and produced in limited quantities, focusing on durability,
+              sustainability, and timeless wear.
+            </p>
+          </div>
+          <img
+            src="asset/image/about.png"
+            alt="About Voxera"
+            class="about-image reveal-right"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </section>
 
-        <section id="testimonials" class="text-center">
-            <h2>What Our Users Say</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"The quality of the fabrics combined with the AR experience is unlike anything I've seen before. VOID is truly the future."</p>
-                    <p class="testimonial-author">Alex Chen</p>
-                    <p class="testimonial-role">Digital Artist</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"I love how the clothes fit both my physical style and my digital avatar. The cross-platform compatibility is seamless."</p>
-                    <p class="testimonial-author">Sarah Jenkins</p>
-                    <p class="testimonial-role">Metaverse Explorer</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Fast shipping, incredible packaging, and the product itself is a masterpiece of design. Highly recommended."</p>
-                    <p class="testimonial-author">Marcus Thorne</p>
-                    <p class="testimonial-role">Fashion Blogger</p>
-                </div>
-            </div>
-        </section>
+      <section id="testimonials" class="text-center">
+        <h2 data-i18n="testimonials">What Our Users Say</h2>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "The quality of the fabrics combined with the AR experience is
+              unlike anything I've seen before. Voxera is truly the future."
+            </p>
+            <p class="testimonial-author">Alex Chen</p>
+            <p class="testimonial-role">Digital Artist</p>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "I love how the clothes fit both my physical style and my digital
+              avatar. The cross-platform compatibility is seamless."
+            </p>
+            <p class="testimonial-author">Sarah Jenkins</p>
+            <p class="testimonial-role">Metaverse Explorer</p>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "Fast shipping, incredible packaging, and the product itself is a
+              masterpiece of design. Highly recommended."
+            </p>
+            <p class="testimonial-author">Marcus Thorne</p>
+            <p class="testimonial-role">Fashion Blogger</p>
+          </div>
+        </div>
+      </section>
 
-        <section id="contact">
-            <h2>Get in Touch</h2>
-            <p>Have a question or a collaboration idea? Drop us a line.</p>
-            <form>
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit" class="cta-btn">Send Message</button>
-            </form>
-        </section>
+      <section id="contact">
+        <h2 data-i18n="contactTitle">Get in Touch</h2>
+        <p data-i18n="contactSub">
+          Have a question or a collaboration idea? Drop us a line.
+        </p>
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="contact-name" data-i18n="name">Your Name</label>
+            <input type="text" id="contact-name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-email" data-i18n="email">Your Email</label>
+            <input type="email" id="contact-email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-message" data-i18n="message"
+              >Your Message</label
+            >
+            <textarea
+              id="contact-message"
+              name="message"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="cta-btn" data-i18n="send">
+            Send Message
+          </button>
+        </form>
+      </section>
     </main>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>VOID</h3>
-                <p>Future Forms, Present Fashion.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#shop">Shop</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="admin.html">Admin</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-pinterest"></i></a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Newsletter</h3>
-                <p>Subscribe for the latest drops.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit" class="cta-btn" style="width: 100%; padding: 0.5rem; font-size: 0.9rem;">Subscribe</button>
-                </form>
-            </div>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 data-i18n="heroTitle">Voxera</h3>
+          <p data-i18n="footerMottoShort">Present Fashion.</p>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 VOID. All Rights Reserved.</p>
+        <div class="footer-section">
+          <h3 data-i18n="quickLinks">Quick Links</h3>
+          <ul>
+            <li><a href="#home" data-i18n="home">Home</a></li>
+            <li><a href="#shop" data-i18n="shop">Shop</a></li>
+            <li><a href="#about" data-i18n="about">About</a></li>
+            <li><a href="#contact" data-i18n="contact">Contact</a></li>
+            <li><a href="admin.html" data-i18n="admin">Admin</a></li>
+            <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
+          </ul>
         </div>
+        <div class="footer-section">
+          <h3 data-i18n="followUs">Follow Us</h3>
+          <div class="social-icons">
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="Pinterest"
+              ><i class="fab fa-pinterest"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3 data-i18n="newsletterTitle">Newsletter</h3>
+          <p data-i18n="newsletter">Subscribe for the latest drops.</p>
+          <form class="newsletter-form">
+            <label for="newsletter-email" class="sr-only">Email address</label>
+            <input
+              type="email"
+              id="newsletter-email"
+              placeholder="Enter your email"
+              required
+              data-i18n-placeholder="emailPlaceholder"
+            />
+            <button
+              type="submit"
+              class="cta-btn newsletter-btn"
+              data-i18n="subscribe"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2024 Voxera.
+          <span data-i18n="allRightsReserved">All Rights Reserved.</span>
+        </p>
+      </div>
     </footer>
 
     <div id="product-detail">
-        <div class="product-detail-content">
-            <button class="close-detail">&times;</button>
-            <div class="product-viewer-container">
-                <img id="product-viewer" src="" alt="Product image">
-            </div>
-            <div class="product-info">
-                <h2 id="detail-name"></h2>
-                <p id="detail-price"></p>
-                <div class="selectors">
-                    <div class="size-selector">
-                        <label for="size">Size:</label>
-                        <select id="size">
-                            <option style="color:black">S</option>
-                            <option style="color:black">M</option>
-                            <option style="color:black">L</option>
-                            <option style="color:black">XL</option>
-                        </select>
-                    </div>
-                    <div class="color-selector">
-                        <label for="color">Color:</label>
-                        <div id="detail-colors"></div>
-                    </div>
-                </div>
-                <p id="detail-desc"></p>
-                <button class="add-to-cart-btn">Add to Cart</button>
-            </div>
+      <div class="product-detail-content">
+        <button class="close-detail">&times;</button>
+        <div class="product-viewer-container">
+          <img id="product-viewer" src="" alt="Product image" />
         </div>
+        <div class="product-info">
+          <h2 id="detail-name"></h2>
+          <p id="detail-price"></p>
+          <div class="selectors">
+            <div class="size-selector">
+              <label for="size" data-i18n="size">Size:</label>
+              <select id="size">
+                <option style="color: black">S</option>
+                <option style="color: black">M</option>
+                <option style="color: black">L</option>
+                <option style="color: black">XL</option>
+              </select>
+            </div>
+            <div class="color-selector">
+              <label for="color" data-i18n="color">Color:</label>
+              <div id="detail-colors"></div>
+            </div>
+          </div>
+          <p id="detail-desc"></p>
+          <button class="add-to-cart-btn" data-i18n="addToCart">
+            Add to Cart
+          </button>
+        </div>
+      </div>
     </div>
 
     <div id="cart">
-        <div class="cart-panel">
-            <button class="close-cart">&times;</button>
-            <h2>Your Cart</h2>
-            <div class="cart-items">
-                <!-- Cart items will be injected by JavaScript -->
-            </div>
-            <div class="cart-summary">
-                <p>Total: <span class="total-price">$0.00</span></p>
-                <button class="checkout-btn">Checkout</button>
-            </div>
+      <div class="cart-panel">
+        <button class="close-cart">&times;</button>
+        <h2 data-i18n="cartTitle">Your Cart</h2>
+        <div class="cart-items">
+          <!-- Cart items will be injected by JavaScript -->
         </div>
+        <div class="cart-summary">
+          <p>
+            <span data-i18n="total">Total</span>:
+            <span class="total-price">$0.00</span>
+          </p>
+          <button class="checkout-btn" data-i18n="checkout">Checkout</button>
+        </div>
+      </div>
     </div>
 
     <!-- Auth Modal -->
     <div id="auth-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal close-auth">&times;</span>
-            <div class="auth-tabs">
-                <button class="auth-tab active" data-target="login-form">Login</button>
-                <button class="auth-tab" data-target="signup-form">Sign Up</button>
-            </div>
-            
-            <form id="login-form" class="auth-form active">
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" id="login-email" required>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <div class="input-icon-wrap">
-                        <input type="password" id="login-pass" required>
-                        <i class="far fa-eye password-toggle" data-target="login-pass"></i>
-                    </div>
-                </div>
-                <div style="text-align: right; margin-bottom: 15px;">
-                    <a href="#" id="forgot-pass-link" style="color: var(--accent-color); font-size: 0.9rem; text-decoration: none;">Forgot Password?</a>
-                </div>
-                <button type="submit" class="cta-btn" style="width: 100%;">Login</button>
-            </form>
-
-            <form id="signup-form" class="auth-form">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="signup-name" required>
-                </div>
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" id="signup-email" required>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <div class="input-icon-wrap">
-                        <input type="password" id="signup-pass" required>
-                        <i class="far fa-eye password-toggle" data-target="signup-pass"></i>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Profile Photo (Optional)</label>
-                    <input type="file" id="signup-avatar" accept="image/*">
-                </div>
-                <button type="submit" class="cta-btn" style="width: 100%;">Create Account</button>
-            </form>
-
-            <form id="forgot-pass-form" class="auth-form">
-                <h3 style="margin-bottom: 1.5rem; text-align: center;">Reset Password</h3>
-                <p style="margin-bottom: 1.5rem; color: var(--secondary-color); text-align: center; font-size: 0.9rem;">Enter your email address and we'll send you a link to reset your password.</p>
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" id="forgot-email" required>
-                </div>
-                <button type="submit" class="cta-btn" style="width: 100%;">Send Reset Link</button>
-                <div style="text-align: center; margin-top: 1rem;">
-                    <a href="#" id="back-to-login" style="color: var(--secondary-color); font-size: 0.9rem; text-decoration: none;">Back to Login</a>
-                </div>
-            </form>
+      <div class="modal-content">
+        <span class="close-modal close-auth">&times;</span>
+        <div class="auth-tabs">
+          <button
+            class="auth-tab active"
+            data-target="login-form"
+            data-i18n="login"
+          >
+            Login
+          </button>
+          <button class="auth-tab" data-target="signup-form" data-i18n="signUp">
+            Sign Up
+          </button>
         </div>
+
+        <form id="login-form" class="auth-form active">
+          <div class="form-group">
+            <label for="login-email" data-i18n="emailAddr">Email Address</label>
+            <input type="email" id="login-email" required />
+          </div>
+          <div class="form-group">
+            <label for="login-pass" data-i18n="password">Password</label>
+            <div class="input-icon-wrap">
+              <input type="password" id="login-pass" required />
+              <i
+                class="far fa-eye password-toggle"
+                data-target="login-pass"
+              ></i>
+            </div>
+          </div>
+          <div class="forgot-pass-link-container">
+            <a href="#" id="forgot-pass-link" data-i18n="forgotPassword"
+              >Forgot Password?</a
+            >
+          </div>
+          <button type="submit" class="cta-btn auth-btn" data-i18n="login">
+            Login
+          </button>
+        </form>
+
+        <form id="signup-form" class="auth-form">
+          <div class="form-group">
+            <label for="signup-name" data-i18n="fullName">Full Name</label>
+            <input type="text" id="signup-name" required />
+          </div>
+          <div class="form-group">
+            <label for="signup-email" data-i18n="emailAddr"
+              >Email Address</label
+            >
+            <input type="email" id="signup-email" required />
+          </div>
+          <div class="form-group">
+            <label for="signup-pass" data-i18n="password">Password</label>
+            <div class="input-icon-wrap">
+              <input type="password" id="signup-pass" required />
+              <i
+                class="far fa-eye password-toggle"
+                data-target="signup-pass"
+              ></i>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="signup-avatar" data-i18n="profilePhotoOptional"
+              >Profile Photo (Optional)</label
+            >
+            <input type="file" id="signup-avatar" accept="image/*" />
+          </div>
+          <button
+            type="submit"
+            class="cta-btn auth-btn"
+            data-i18n="createAccount"
+          >
+            Create Account
+          </button>
+        </form>
+
+        <form id="forgot-pass-form" class="auth-form">
+          <h3 data-i18n="resetPassword">Reset Password</h3>
+          <p class="forgot-pass-intro" data-i18n="enterEmailReset">
+            Enter your email address and we'll send you a link to reset your
+            password.
+          </p>
+          <div class="form-group">
+            <label for="forgot-email" data-i18n="emailAddr"
+              >Email Address</label
+            >
+            <input type="email" id="forgot-email" required />
+          </div>
+          <button
+            type="submit"
+            class="cta-btn auth-btn"
+            data-i18n="sendResetLink"
+          >
+            Send Reset Link
+          </button>
+          <div class="back-to-login-container">
+            <a href="#" id="back-to-login" data-i18n="backToLogin"
+              >Back to Login</a
+            >
+          </div>
+        </form>
+      </div>
     </div>
 
-    <button id="scroll-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+    <button id="scroll-top" title="Go to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="js/main.js"></script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
+      defer
+    ></script>
+    <script src="https://js.stripe.com/v3/" defer></script>
+    <script type="module" src="js/main.js"></script>
+  </body>
 </html>

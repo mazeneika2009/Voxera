@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Void - Collection</title>
+    <title>Voxera - Collection</title>
+    <link rel="icon" type="image/x-icon" href="asset/image/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">VOID</div>
+            <div class="logo">Voxera</div>
             <ul class="nav-links">
                 <li><a href="index.html#home" class="nav-link">Home</a></li>
                 <li><a href="index.html#shop" class="nav-link">Shop</a></li>
@@ -19,6 +20,10 @@
                 <li><a href="faq.html" class="nav-link">FAQ</a></li>
             </ul>
             <div class="nav-right">
+                <div class="nav-controls">
+                    <button id="theme-toggle" class="control-btn" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+                    <button id="lang-toggle" class="control-btn" aria-label="Switch Language">AR</button>
+                </div>
                 <a href="#" class="user-icon" title="Login / Sign Up">
                     <i class="far fa-user"></i>
                 </a>
@@ -38,19 +43,19 @@
     <main>
         <section id="shop" style="padding-top: 120px; min-height: 80vh;">
             <div class="shop-controls" style="max-width: 1200px; margin: 0 auto 2rem; display: flex; justify-content: space-between; padding: 0 20px; flex-wrap: wrap; gap: 1rem;">
-                <input type="text" id="shop-search" placeholder="Search products..." style="max-width: 300px;">
+                <input type="text" id="shop-search" placeholder="Search products..." style="max-width: 300px;" data-i18n-placeholder="searchPlaceholder">
                 <select id="shop-sort" style="max-width: 200px;">
-                    <option value="default" style="color: black">Sort by: Default</option>
-                    <option value="price-asc" style="color: black">Price: Low to High</option>
-                    <option value="price-desc" style="color: black">Price: High to Low</option>
+                    <option value="default" style="color: black" data-i18n="sortByDefault">Sort by: Default</option>
+                    <option value="price-asc" style="color: black" data-i18n="sortPriceAsc">Price: Low to High</option>
+                    <option value="price-desc" style="color: black" data-i18n="sortPriceDesc">Price: High to Low</option>
                 </select>
             </div>
 
-            <h2>All Products</h2>
+            <h2 data-i18n="allProducts">All Products</h2>
             <div id="collection-features"></div>
             <div class="product-grid"></div>
             <div style="text-align: center; margin-top: 3rem;">
-                <button id="load-more-btn" class="cta-btn">Load More</button>
+                <button id="load-more-btn" class="cta-btn" data-i18n="loadMore">Load More</button>
             </div>
         </section>
     </main>
@@ -58,21 +63,21 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>VOID</h3>
-                <p>Future Forms, Present Fashion.</p>
+                <h3 data-i18n="heroTitle">Voxera</h3>
+                <p data-i18n="footerMotto">Future Forms, Present Fashion.</p>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
+                <h3 data-i18n="quickLinks">Quick Links</h3>
                 <ul>
-                    <li><a href="index.html#home">Home</a></li>
-                    <li><a href="index.html#shop">Shop</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="index.html#home" data-i18n="home">Home</a></li>
+                    <li><a href="index.html#shop" data-i18n="shop">Shop</a></li>
+                    <li><a href="index.html#about" data-i18n="about">About</a></li>
+                    <li><a href="index.html#contact" data-i18n="contact">Contact</a></li>
+                    <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Follow Us</h3>
+                <h3 data-i18n="followUs">Follow Us</h3>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -82,7 +87,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 VOID. All Rights Reserved.</p>
+            <p>&copy; 2024 Voxera. <span data-i18n="allRightsReserved">All Rights Reserved.</span></p>
         </div>
     </footer>
 
@@ -98,7 +103,7 @@
                 <p id="detail-price"></p>
                 <div class="selectors">
                     <div class="size-selector">
-                        <label for="size">Size:</label>
+                        <label for="size" data-i18n="size">Size:</label>
                         <select id="size">
                             <option style="color:black">S</option>
                             <option style="color:black">M</option>
@@ -107,12 +112,12 @@
                         </select>
                     </div>
                     <div class="color-selector">
-                        <label for="color">Color:</label>
+                        <label for="color" data-i18n="color">Color:</label>
                         <div id="detail-colors"></div>
                     </div>
                 </div>
                 <p id="detail-desc"></p>
-                <button class="add-to-cart-btn">Add to Cart</button>
+                <button class="add-to-cart-btn" data-i18n="addToCart">Add to Cart</button>
             </div>
         </div>
     </div>
@@ -121,11 +126,11 @@
     <div id="cart">
         <div class="cart-panel">
             <button class="close-cart">&times;</button>
-            <h2>Your Cart</h2>
+            <h2 data-i18n="cartTitle">Your Cart</h2>
             <div class="cart-items"></div>
             <div class="cart-summary">
-                <p>Total: <span class="total-price">$0.00</span></p>
-                <button class="checkout-btn">Checkout</button>
+                <p><span data-i18n="total">Total</span>: <span class="total-price">$0.00</span></p>
+                <button class="checkout-btn" data-i18n="checkout">Checkout</button>
             </div>
         </div>
     </div>
@@ -135,28 +140,28 @@
         <div class="modal-content">
             <span class="close-modal close-auth">&times;</span>
             <div class="auth-tabs">
-                <button class="auth-tab active" data-target="login-form">Login</button>
-                <button class="auth-tab" data-target="signup-form">Sign Up</button>
+                <button class="auth-tab active" data-target="login-form" data-i18n="login">Login</button>
+                <button class="auth-tab" data-target="signup-form" data-i18n="signUp">Sign Up</button>
             </div>
             <form id="login-form" class="auth-form active">
-                <div class="form-group"><label>Email Address</label><input type="email" id="login-email" required></div>
-                <div class="form-group"><label>Password</label><div class="input-icon-wrap"><input type="password" id="login-pass" required><i class="far fa-eye password-toggle" data-target="login-pass"></i></div></div>
-                <div style="text-align: right; margin-bottom: 15px;"><a href="#" id="forgot-pass-link" style="color: var(--accent-color); font-size: 0.9rem; text-decoration: none;">Forgot Password?</a></div>
-                <button type="submit" class="cta-btn" style="width: 100%;">Login</button>
+                <div class="form-group"><label data-i18n="emailAddr">Email Address</label><input type="email" id="login-email" required></div>
+                <div class="form-group"><label data-i18n="password">Password</label><div class="input-icon-wrap"><input type="password" id="login-pass" required><i class="far fa-eye password-toggle" data-target="login-pass"></i></div></div>
+                <div style="text-align: right; margin-bottom: 15px;"><a href="#" id="forgot-pass-link" style="color: var(--accent-color); font-size: 0.9rem; text-decoration: none;" data-i18n="forgotPassword">Forgot Password?</a></div>
+                <button type="submit" class="cta-btn" style="width: 100%;" data-i18n="login">Login</button>
             </form>
             <form id="signup-form" class="auth-form">
-                <div class="form-group"><label>Full Name</label><input type="text" id="signup-name" required></div>
-                <div class="form-group"><label>Email Address</label><input type="email" id="signup-email" required></div>
-                <div class="form-group"><label>Password</label><div class="input-icon-wrap"><input type="password" id="signup-pass" required><i class="far fa-eye password-toggle" data-target="signup-pass"></i></div></div>
-                <div class="form-group"><label>Profile Photo (Optional)</label><input type="file" id="signup-avatar" accept="image/*"></div>
-                <button type="submit" class="cta-btn" style="width: 100%;">Create Account</button>
+                <div class="form-group"><label data-i18n="fullName">Full Name</label><input type="text" id="signup-name" required></div>
+                <div class="form-group"><label data-i18n="emailAddr">Email Address</label><input type="email" id="signup-email" required></div>
+                <div class="form-group"><label data-i18n="password">Password</label><div class="input-icon-wrap"><input type="password" id="signup-pass" required><i class="far fa-eye password-toggle" data-target="signup-pass"></i></div></div>
+                <div class="form-group"><label data-i18n="profilePhotoOptional">Profile Photo (Optional)</label><input type="file" id="signup-avatar" accept="image/*"></div>
+                <button type="submit" class="cta-btn" style="width: 100%;" data-i18n="createAccount">Create Account</button>
             </form>
             <form id="forgot-pass-form" class="auth-form">
-                <h3 style="margin-bottom: 1.5rem; text-align: center;">Reset Password</h3>
-                <p style="margin-bottom: 1.5rem; color: var(--secondary-color); text-align: center; font-size: 0.9rem;">Enter your email address and we'll send you a link to reset your password.</p>
-                <div class="form-group"><label>Email Address</label><input type="email" id="forgot-email" required></div>
-                <button type="submit" class="cta-btn" style="width: 100%;">Send Reset Link</button>
-                <div style="text-align: center; margin-top: 1rem;"><a href="#" id="back-to-login" style="color: var(--secondary-color); font-size: 0.9rem; text-decoration: none;">Back to Login</a></div>
+                <h3 style="margin-bottom: 1.5rem; text-align: center;" data-i18n="resetPassword">Reset Password</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--secondary-color); text-align: center; font-size: 0.9rem;" data-i18n="enterEmailReset">Enter your email address and we'll send you a link to reset your password.</p>
+                <div class="form-group"><label data-i18n="emailAddr">Email Address</label><input type="email" id="forgot-email" required></div>
+                <button type="submit" class="cta-btn" style="width: 100%;" data-i18n="sendResetLink">Send Reset Link</button>
+                <div style="text-align: center; margin-top: 1rem;"><a href="#" id="back-to-login" style="color: var(--secondary-color); font-size: 0.9rem; text-decoration: none;" data-i18n="backToLogin">Back to Login</a></div>
             </form>
         </div>
     </div>
@@ -165,6 +170,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Void - Admin Dashboard</title>
+    <title>Voxera - Admin Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="asset/image/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Genos:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         .admin-stats-grid {
             display: grid;
@@ -38,60 +42,66 @@
 <body>
     <div id="admin-login-overlay">
         <div class="login-box">
-            <h2>Admin Access</h2>
+            <h2 data-i18n="adminAccess">Admin Access</h2>
             <form id="admin-login-form">
                 <div class="form-group">
-                    <label>Username</label>
+                    <label data-i18n="username">Username</label>
                     <input type="text" id="admin-user" required>
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
+                    <label data-i18n="password">Password</label>
                     <div class="input-icon-wrap">
                         <input type="password" id="admin-pass" required>
                         <i class="far fa-eye password-toggle" data-target="admin-pass"></i>
                     </div>
                 </div>
-                <button type="submit" class="cta-btn" style="width: 100%;">Login</button>
+                <button type="submit" class="cta-btn" style="width: 100%;" data-i18n="login">Login</button>
             </form>
         </div>
     </div>
 
     <header style="display: none;">
         <nav>
-            <div class="logo">VOID ADMIN</div>
+            <div class="logo">VOXERA ADMIN</div>
             <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Back to Site</a></li>
+                <li><a href="index.html" class="nav-link" data-i18n="backToSite">Back to Site</a></li>
             </ul>
+            <div class="nav-right">
+                <div class="nav-controls">
+                    <button id="theme-toggle" class="control-btn" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+                    <button id="lang-toggle" class="control-btn" aria-label="Switch Language">AR</button>
+                </div>
+            </div>
         </nav>
     </header>
 
     <main style="display: none;">
         <section class="admin-container">
             <div class="admin-header">
-                <h1>Dashboard Overview</h1>
+                <h1 data-i18n="dashboardOverview">Dashboard Overview</h1>
             </div>
             <div class="admin-stats-grid">
                 <div class="stat-card">
-                    <h3>Total Products</h3>
+                    <h3 data-i18n="totalProducts">Total Products</h3>
                     <p id="stat-total-products">0</p>
                 </div>
                 <div class="stat-card">
-                    <h3>Total Inventory Value</h3>
+                    <h3 data-i18n="totalValue">Total Inventory Value</h3>
                     <p id="stat-total-value">$0.00</p>
                 </div>
                 <div class="stat-card">
-                    <h3>Average Price</h3>
+                    <h3 data-i18n="avgPrice">Average Price</h3>
                     <p id="stat-avg-price">$0.00</p>
                 </div>
                 <div class="stat-card">
-                    <h3>Top Category</h3>
+                    <h3 data-i18n="topCategory">Top Category</h3>
                     <p id="stat-top-category">-</p>
                 </div>
             </div>
 
             <div class="admin-header">
-                <h1>Product Management</h1>
-                <button id="add-product-btn" class="cta-btn">Add New Product</button>
+                <h1 data-i18n="productManagement">Product Management</h1>
+                <button id="add-product-btn" class="cta-btn" data-i18n="addNewProduct">Add New Product</button>
             </div>
 
             <div class="admin-content">
@@ -99,11 +109,11 @@
                     <table class="admin-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Category</th>
-                                <th>Actions</th>
+                                <th data-i18n="thId">ID</th>
+                                <th data-i18n="thName">Name</th>
+                                <th data-i18n="thPrice">Price</th>
+                                <th data-i18n="thCategory">Category</th>
+                                <th data-i18n="thActions">Actions</th>
                             </tr>
                         </thead>
                         <tbody id="admin-product-list">
@@ -119,23 +129,23 @@
     <div id="admin-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <h2 id="modal-title">Add Product</h2>
+            <h2 id="modal-title" data-i18n="modalAddTitle">Add Product</h2>
             <form id="product-form">
                 <input type="hidden" id="product-id">
                 
                 <div class="form-group">
-                    <label>Product Name</label>
+                    <label data-i18n="lblProductName">Product Name</label>
                     <input type="text" id="p-name" required>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Price ($)</label>
+                        <label data-i18n="lblPrice">Price ($)</label>
                         <input type="number" id="p-price" step="0.01" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Category</label>
+                        <label data-i18n="lblCategory">Category</label>
                         <select id="p-category" required>
                             <option value="Street">Street</option>
                             <option value="Minimalist">Minimalist</option>
@@ -151,37 +161,37 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Colors (Hex codes, comma separated)</label>
+                        <label data-i18n="lblColors">Colors (Hex codes, comma separated)</label>
                         <input type="text" id="p-colors" placeholder="#000000, #ffffff">
                     </div>
 
                     <div class="form-group">
-                        <label>Sizes (Comma separated)</label>
+                        <label data-i18n="lblSizes">Sizes (Comma separated)</label>
                         <input type="text" id="p-sizes" placeholder="S, M, L, XL">
                     </div>
                 </div>
 
                 <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
                     <input type="checkbox" id="p-new-arrival" style="width: auto; margin: 0;">
-                    <label for="p-new-arrival" style="margin: 0; cursor: pointer;">Feature in New Arrivals</label>
+                    <label for="p-new-arrival" style="margin: 0; cursor: pointer;" data-i18n="lblNewArrival">Feature in New Arrivals</label>
                 </div>
 
                 <div class="form-group">
-                    <label>Description</label>
+                    <label data-i18n="lblDescription">Description</label>
                     <textarea id="p-desc" rows="3"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label>Product Image (File)</label>
+                    <label data-i18n="lblImageFile">Product Image (File)</label>
                     <input type="file" id="p-image" accept="image/*">
                 </div>
 
                 <div class="form-group">
-                    <label>Or Product Image (URL)</label>
+                    <label data-i18n="lblImageUrl">Or Product Image (URL)</label>
                     <input type="text" id="p-image-url" placeholder="https://example.com/image.jpg">
                 </div>
 
-                <button type="submit" class="cta-btn">Save Product</button>
+                <button type="submit" class="cta-btn" data-i18n="btnSave">Save Product</button>
             </form>
         </div>
     </div>
@@ -189,23 +199,23 @@
     <footer style="display: none;">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>VOID ADMIN</h3>
-                <p>Internal Management System</p>
+                <h3 data-i18n="footerAdmin">VOXERA ADMIN</h3>
+                <p data-i18n="internalSystem">Internal Management System</p>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
+                <h3 data-i18n="quickLinks">Quick Links</h3>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#shop">Shop</a></li>
+                    <li><a href="index.html" data-i18n="home">Home</a></li>
+                    <li><a href="index.html#shop" data-i18n="shop">Shop</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 VOID. All Rights Reserved.</p>
+            <p>&copy; 2024 Voxera. <span data-i18n="allRightsReserved">All Rights Reserved.</span></p>
         </div>
     </footer>
 
     <!-- Reuse main.js for shared logic if needed, but admin.js handles specific logic -->
-    <script src="js/admin.js"></script>
+    <script type="module" src="js/admin.js"></script>
 </body>
 </html>

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Void - FAQ</title>
+    <title>Voxera - FAQ</title>
+    <link rel="icon" type="image/x-icon" href="asset/image/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
@@ -33,7 +34,7 @@
 <body>
     <header>
         <nav>
-            <div class="logo">VOID</div>
+            <div class="logo">Voxera</div>
             <ul class="nav-links">
                 <li><a href="index.html#home" class="nav-link">Home</a></li>
                 <li><a href="index.html#shop" class="nav-link">Shop</a></li>
@@ -42,6 +43,10 @@
                 <li><a href="faq.html" class="nav-link active">FAQ</a></li>
             </ul>
             <div class="nav-right">
+                <div class="nav-controls">
+                    <button id="theme-toggle" class="control-btn" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+                    <button id="lang-toggle" class="control-btn" aria-label="Switch Language">AR</button>
+                </div>
                 <a href="#" class="user-icon" title="Login / Sign Up">
                     <i class="far fa-user"></i>
                 </a>
@@ -60,26 +65,26 @@
 
     <main>
         <section class="faq-container">
-            <h1 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;">Frequently Asked Questions</h1>
+            <h1 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;" data-i18n="faqTitle">Frequently Asked Questions</h1>
             
             <div class="faq-item">
-                <h3>How does the digital sizing work?</h3>
-                <p>Our clothing is designed with standard international sizing. For our digital-only items, files are compatible with most major 3D avatars and metaverse platforms.</p>
+                <h3 data-i18n="faqQ1">How does the digital sizing work?</h3>
+                <p data-i18n="faqA1">Our clothing is designed with standard international sizing. For our digital-only items, files are compatible with most major 3D avatars and metaverse platforms.</p>
             </div>
 
             <div class="faq-item">
-                <h3>Do you ship internationally?</h3>
-                <p>Yes, VOID ships to over 50 countries worldwide. Shipping times vary based on location, but typically range from 5-10 business days.</p>
+                <h3 data-i18n="faqQ2">Do you ship internationally?</h3>
+                <p data-i18n="faqA2">Yes, Voxera ships to over 50 countries worldwide. Shipping times vary based on location, but typically range from 5-10 business days.</p>
             </div>
 
             <div class="faq-item">
-                <h3>What is the return policy?</h3>
-                <p>Physical items can be returned within 30 days of receipt if they are unworn and in original packaging. Digital assets are non-refundable once downloaded.</p>
+                <h3 data-i18n="faqQ3">What is the return policy?</h3>
+                <p data-i18n="faqA3">Physical items can be returned within 30 days of receipt if they are unworn and in original packaging. Digital assets are non-refundable once downloaded.</p>
             </div>
 
             <div class="faq-item">
-                <h3>Are the materials sustainable?</h3>
-                <p>Absolutely. We use a blend of recycled synthetics and organic cottons. Our goal is to minimize our carbon footprint while maximizing durability.</p>
+                <h3 data-i18n="faqQ4">Are the materials sustainable?</h3>
+                <p data-i18n="faqA4">Absolutely. We use a blend of recycled synthetics and organic cottons. Our goal is to minimize our carbon footprint while maximizing durability.</p>
             </div>
         </section>
     </main>
@@ -87,21 +92,21 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>VOID</h3>
-                <p>Future Forms, Present Fashion.</p>
+                <h3 data-i18n="heroTitle">Voxera</h3>
+                <p data-i18n="footerMotto">Future Forms, Present Fashion.</p>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
+                <h3 data-i18n="quickLinks">Quick Links</h3>
                 <ul>
-                    <li><a href="index.html#home">Home</a></li>
-                    <li><a href="index.html#shop">Shop</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="index.html#home" data-i18n="home">Home</a></li>
+                    <li><a href="index.html#shop" data-i18n="shop">Shop</a></li>
+                    <li><a href="index.html#about" data-i18n="about">About</a></li>
+                    <li><a href="index.html#contact" data-i18n="contact">Contact</a></li>
+                    <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Follow Us</h3>
+                <h3 data-i18n="followUs">Follow Us</h3>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -110,27 +115,27 @@
                 </div>
             </div>
             <div class="footer-section">
-                <h3>Newsletter</h3>
-                <p>Subscribe for the latest drops.</p>
+                <h3 data-i18n="newsletterTitle">Newsletter</h3>
+                <p data-i18n="newsletter">Subscribe for the latest drops.</p>
                 <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit" class="cta-btn" style="width: 100%; padding: 0.5rem; font-size: 0.9rem;">Subscribe</button>
+                    <input type="email" placeholder="Enter your email" required data-i18n-placeholder="emailPlaceholder">
+                    <button type="submit" class="cta-btn" style="width: 100%; padding: 0.5rem; font-size: 0.9rem;" data-i18n="subscribe">Subscribe</button>
                 </form>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 VOID. All Rights Reserved.</p>
+            <p>&copy; 2024 Voxera. <span data-i18n="allRightsReserved">All Rights Reserved.</span></p>
         </div>
     </footer>
 
     <div id="cart">
         <div class="cart-panel">
             <button class="close-cart">&times;</button>
-            <h2>Your Cart</h2>
+            <h2 data-i18n="cartTitle">Your Cart</h2>
             <div class="cart-items"></div>
             <div class="cart-summary">
-                <p>Total: <span class="total-price">$0.00</span></p>
-                <button class="checkout-btn">Checkout</button>
+                <p><span data-i18n="total">Total</span>: <span class="total-price">$0.00</span></p>
+                <button class="checkout-btn" data-i18n="checkout">Checkout</button>
             </div>
         </div>
     </div>
@@ -140,6 +145,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
