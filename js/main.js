@@ -773,7 +773,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Global Click Delegation
             document.body.addEventListener('click', (e) => {
                 // Product Card Clicks
-                const card = e.target.closest('.product-card, .featured-card');
+                const card = e.target.closest('.product-card, .featured-card, .slider-3d-item');
                 if (card) {
                     const id = parseInt(card.dataset.productId);
                     const product = State.products.find(p => p.id === id);
