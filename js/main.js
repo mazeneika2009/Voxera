@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cart: [],
         users: JSON.parse(localStorage.getItem('voxera_users')) || [],
         currentUser: JSON.parse(localStorage.getItem('voxera_user')) || null,
-        orders: {},
+        orders: JSON.parse(localStorage.getItem('voxera_orders')) || {},
         products: [...products],
         collections: [...collections],
         itemsToShow: CONFIG.itemsPerPage,
@@ -75,15 +75,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 home: "Home", shop: "Shop", about: "About", contact: "Contact", faq: "FAQ",
                 heroTitle: "Voxera", heroSubtitle: "Clothing as structure. Style as evolution.", discover: "Discover More",
                 newArrivals: "New Arrivals", lookbook: "Style Lookbook", collections: "Collections",
+                lookbookTitle1: "Urban Explorer", lookbookDesc1: "Combining functional techwear with minimalist aesthetics for the modern cityscape.",
+                lookbookTitle2: "Digital Nomad", lookbookDesc2: "Comfort and style for a life on the move. Versatile pieces that adapt to any environment.",
+                lookbookTitle3: "Neon Nights", lookbookDesc3: "Vibrant hues designed for the nocturnal wanderer in the digital metropolis.",
+                lookbookTitle4: "Zero Gravity", lookbookDesc4: "Lightweight fabrics engineered for maximum mobility and comfort.",
                 aboutTitle: "ABOUT Voxera",
                 aboutText1: "Voxera is a fashion label built around form, fit, and expression. We create contemporary garments that balance minimal aesthetics with strong identity.",
                 aboutText2: "Every piece is thoughtfully constructed using quality materials and produced in limited quantities, focusing on durability, sustainability, and timeless wear.",
                 testimonials: "What Our Users Say",
+                testimText1: "\"The quality of the fabrics combined with the AR experience is unlike anything I've seen before. Voxera is truly the future.\"",
+                testimAuthor1: "Alex Chen", testimRole1: "Digital Artist",
+                testimText2: "\"I love how the clothes fit both my physical style and my digital avatar. The cross-platform compatibility is seamless.\"",
+                testimAuthor2: "Sarah Jenkins", testimRole2: "Metaverse Explorer",
+                testimText3: "\"Fast shipping, incredible packaging, and the product itself is a masterpiece of design. Highly recommended.\"",
+                testimAuthor3: "Marcus Thorne", testimRole3: "Fashion Blogger",
                 contactTitle: "Get in Touch", contactSub: "Have a question or a collaboration idea? Drop us a line.",
                 name: "Your Name", email: "Your Email", message: "Your Message", send: "Send Message",
                 newsletter: "Subscribe for the latest drops.", subscribe: "Subscribe", emailPlaceholder: "Enter your email",
                 cartTitle: "Your Cart", total: "Total", checkout: "Checkout",
                 size: "Size:", color: "Color:", addToCart: "Add to Cart",
+                quickView: "Quick View", cartEmpty: "Your cart is empty.",
                 // Auth & Common
                 login: "Login", signUp: "Sign Up", emailAddr: "Email Address", password: "Password", fullName: "Full Name",
                 forgotPassword: "Forgot Password?", resetPassword: "Reset Password", sendResetLink: "Send Reset Link",
@@ -125,15 +136,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 home: "الرئيسية", shop: "المتجر", about: "من نحن", contact: "تواصل معنا", faq: "الأسئلة الشائعة",
                 heroTitle: "Vexora", heroSubtitle: "الأزياء كبنية. الأسلوب كتطور.", discover: "اكتشف المزيد",
                 newArrivals: "وصل حديثاً", lookbook: "معرض الأناقة", collections: "المجموعات",
+                lookbookTitle1: "المستكشف الحضري", lookbookDesc1: "الجمع بين الملابس التقنية الوظيفية والجماليات البسيطة لمشهد المدينة الحديث.",
+                lookbookTitle2: "الرحالة الرقمي", lookbookDesc2: "الراحة والأناقة لحياة مليئة بالحركة. قطع متعددة الاستخدامات تتكيف مع أي بيئة.",
+                lookbookTitle3: "ليالي النيون", lookbookDesc3: "ألوان نابضة بالحياة مصممة للمتجول الليلي في المدينة الرقمية.",
+                lookbookTitle4: "انعدام الجاذبية", lookbookDesc4: "أقمشة خفيفة الوزن مصممة هندسيًا لتحقيق أقصى قدر من الحركة والراحة.",
                 aboutTitle: "عن فوكسيرا",
                 aboutText1: "فوكسيرا هي علامة تجارية للأزياء مبنية حول الشكل والملاءمة والتعبير. نصنع ملابس معاصرة توازن بين الجماليات البسيطة والهوية القوية.",
                 aboutText2: "يتم تصميم كل قطعة بعناية باستخدام مواد عالية الجودة وإنتاجها بكميات محدودة، مع التركيز على المتانة والاستدامة.",
                 testimonials: "ماذا يقول عملاؤنا",
+                testimText1: "\"جودة الأقمشة الممزوجة بتجربة الواقع المعزز لا تشبه أي شيء رأيته من قبل. فوكسيرا هي المستقبل حقاً.\"",
+                testimAuthor1: "أليكس تشين", testimRole1: "فنان رقمي",
+                testimText2: "\"أحب كيف تناسب الملابس أسلوبي المادي وشخصيتي الرقمية. التوافق عبر المنصات سلس للغاية.\"",
+                testimAuthor2: "سارة جينكينز", testimRole2: "مستكشفة الميتافيرس",
+                testimText3: "\"شحن سريع، تغليف مذهل، والمنتج نفسه تحفة في التصميم. أنصح به بشدة.\"",
+                testimAuthor3: "ماركوس ثورن", testimRole3: "مدون موضة",
                 contactTitle: "تواصل معنا", contactSub: "لديك سؤال أو فكرة للتعاون؟ راسلنا.",
                 name: "الاسم", email: "البريد الإلكتروني", message: "الرسالة", send: "إرسال الرسالة",
                 newsletter: "اشترك للحصول على أحدث الإصدارات.", subscribe: "اشترك", emailPlaceholder: "أدخل بريدك الإلكتروني",
                 cartTitle: "عربة التسوق", total: "المجموع", checkout: "الدفع",
                 size: "المقاس:", color: "اللون:", addToCart: "أضف إلى العربة",
+                quickView: "نظرة سريعة", cartEmpty: "عربة التسوق فارغة.",
                 // Auth & Common
                 login: "تسجيل الدخول", signUp: "إنشاء حساب", emailAddr: "البريد الإلكتروني", password: "كلمة المرور", fullName: "الاسم الكامل",
                 forgotPassword: "نسيت كلمة المرور؟", resetPassword: "إعادة تعيين كلمة المرور", sendResetLink: "إرسال رابط إعادة التعيين",
@@ -183,6 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
             Localization.lang = Localization.lang === 'en' ? 'ar' : 'en';
             localStorage.setItem('voxera_lang', Localization.lang);
             Localization.apply(Localization.lang);
+            // Re-render profile if active to update dynamic strings like "Not provided"
+            if (Utils.qs('.profile-container')) UI.renderProfile();
         },
 
         apply: (lang) => {
@@ -208,6 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const Cart = {
         createItemElement: (item) => {
             const el = document.createElement('div');
+            const t = Localization.translations[Localization.lang];
             el.className = 'cart-item';
             // Create a unique but consistent ID for the item based on its properties
             const itemIdentifier = `${item.id}-${item.color.replace('#', '')}-${item.size}`;
@@ -215,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
             el.innerHTML = `
                 <div class="cart-item-info">
                     <h4>${item.name}</h4>
-                    <p>Size: ${item.size} / Color: <span style="display: inline-block; width: 12px; height: 12px; background-color: ${item.color}; border-radius: 50%;"></span></p>
+                    <p><span data-i18n="size">${t.size}</span> ${item.size} / <span data-i18n="color">${t.color}</span> <span style="display: inline-block; width: 12px; height: 12px; background-color: ${item.color}; border-radius: 50%;"></span></p>
                     <p>${Utils.formatPrice(item.price)} <span class="item-quantity">x ${item.quantity}</span></p>
                 </div>
                 <button class="remove-item" data-id="${item.id}" data-color="${item.color}" data-size="${item.size}">&times;</button>
@@ -283,7 +308,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // If cart is now empty, show the message
                         if (State.cart.length === 0 && container) {
-                            container.innerHTML = '<p>Your cart is empty.</p>';
+                            const t = Localization.translations[Localization.lang];
+                            container.innerHTML = `<p data-i18n="cartEmpty">${t.cartEmpty}</p>`;
                         }
                     }
                 });
@@ -334,11 +360,12 @@ document.addEventListener('DOMContentLoaded', () => {
         updateUI: () => {
             const container = Utils.qs('.cart-items');
             if (!container) return;
+            const t = Localization.translations[Localization.lang];
 
             container.innerHTML = '';
 
             if (State.cart.length === 0) {
-                container.innerHTML = '<p>Your cart is empty.</p>';
+                container.innerHTML = `<p data-i18n="cartEmpty">${t.cartEmpty}</p>`;
             } else {
                 const fragment = document.createDocumentFragment();
                 State.cart.forEach(item => {
@@ -435,6 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const Products = {
         createCard: (product, className = 'product-card') => {
             const card = document.createElement('div');
+            const t = Localization.translations[Localization.lang];
             card.className = `${className} ${product.className || ''}`.trim();
             card.dataset.productId = product.id;
             const imgUrl = Utils.getImage(product.image);
@@ -442,7 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.innerHTML = `
                 <div class="product-image-wrapper">
                     <img src="${imgUrl}" alt="${product.name}" class="product-card-image" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${CONFIG.fallbackImage}';">
-                    <button class="quick-view-btn">Quick View</button>
+                    <button class="quick-view-btn" data-i18n="quickView">${t.quickView}</button>
                 </div>
                 <h3>${product.name}</h3>
                 <p>${Utils.formatPrice(product.price)}</p>
@@ -550,7 +578,8 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             modal.classList.add('visible');
-            gsap.fromTo(modal, { opacity: 0 }, { opacity: 1, duration: 0.5 });
+            gsap.fromTo(modal, { opacity: 0 }, { opacity: 1, duration: 0 });
+            gsap.fromTo(modal.querySelector('.product-detail-content'), { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0 });
         }
     };
 
@@ -577,7 +606,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hideDetail: () => {
             const modal = Utils.qs('#product-detail');
             if (modal) {
-                gsap.to(modal, { opacity: 0, duration: 0.3, onComplete: () => modal.classList.remove('visible') });
+                gsap.to(modal, { opacity: 0, duration: 0.2, onComplete: () => modal.classList.remove('visible') });
             }
         },
 
@@ -754,8 +783,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
 
         setupSliders: () => {
-            Utils.qsa('.collection-slider-container').forEach(container => {
-                const slider = container.querySelector('.collection-slider');
+            Utils.qsa('.collection-slider-container, .testimonial-slider-container').forEach(container => {
+                const slider = container.querySelector('.collection-slider, .testimonial-slider');
                 const prev = container.querySelector('.prev-btn');
                 const next = container.querySelector('.next-btn');
                 if (!slider || !prev || !next) return;
@@ -905,14 +934,55 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // Checkout
+            // Checkout Flow
             const placeOrderBtn = Utils.qs('#place-order-btn');
+            const paymentModal = Utils.qs('#payment-modal');
+            const closePaymentModal = Utils.qs('#close-payment-modal');
+            const confirmPaymentBtn = Utils.qs('#confirm-payment-btn');
+
             if (placeOrderBtn) {
                 placeOrderBtn.onclick = (e) => {
                     e.preventDefault();
                     if (State.cart.length === 0) return alert('Cart is empty');
-                    // Simulate Stripe
-                    alert('Redirecting to payment...');
-                    // In real app: stripe.redirectToCheckout(...)
+                    if (!State.currentUser) return alert('Please login to place an order.');
+                    
+                    // Update total in modal
+                    const total = State.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                    const totalEl = Utils.qs('#modal-total-price');
+                    if (totalEl) totalEl.textContent = Utils.formatPrice(total);
+                    
+                    if (paymentModal) {
+                        paymentModal.style.display = 'flex';
+                        gsap.fromTo(paymentModal.querySelector('.modal-content'), { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3 });
+                    }
+                };
+            }
+
+            if (closePaymentModal && paymentModal) {
+                closePaymentModal.onclick = () => paymentModal.style.display = 'none';
+            }
+
+            if (confirmPaymentBtn) {
+                confirmPaymentBtn.onclick = () => {
+                    const btnText = confirmPaymentBtn.textContent;
+                    confirmPaymentBtn.textContent = 'Processing...';
+                    confirmPaymentBtn.disabled = true;
+
+                    setTimeout(() => {
+                        const orderId = 'ORD-' + Math.floor(Math.random() * 1000000);
+                        const total = State.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                        const newOrder = { orderId, date: new Date().toLocaleDateString(), items: [...State.cart], total, status: 'Processing' };
+
+                        const userEmail = State.currentUser.email;
+                        if (!State.orders[userEmail]) State.orders[userEmail] = [];
+                        State.orders[userEmail].push(newOrder);
+                        localStorage.setItem('voxera_orders', JSON.stringify(State.orders));
+
+                        State.cart = [];
+                        Cart.updateUI();
+                        alert('Order placed successfully!');
+                        window.location.href = 'profile.html';
+                    }, 1500);
                 };
             }
 
@@ -933,6 +1003,82 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Parallax scroll for hero section
             window.addEventListener('scroll', UI.handleParallax);
+
+            // --- Profile Page Listeners ---
+            
+            // Profile Tabs (Personal Info / My Orders)
+            Utils.qsa('.menu-btn').forEach(btn => {
+                btn.onclick = () => {
+                    Utils.qsa('.menu-btn').forEach(b => b.classList.remove('active'));
+                    Utils.qsa('.profile-tab').forEach(t => t.classList.remove('active'));
+                    btn.classList.add('active');
+                    const target = Utils.qs(`#tab-${btn.dataset.tab}`);
+                    if (target) target.classList.add('active');
+                };
+            });
+
+            // Edit Profile Modal
+            const editProfileBtn = Utils.qs('#edit-profile-btn');
+            const editProfileModal = Utils.qs('#edit-profile-modal');
+            const closeEditProfile = Utils.qs('#close-edit-profile');
+            const editProfileForm = Utils.qs('#edit-profile-form');
+
+            if (editProfileBtn && editProfileModal) {
+                editProfileBtn.onclick = () => {
+                    const user = State.currentUser;
+                    if (!user) return;
+                    
+                    Utils.qs('#edit-name').value = user.name || '';
+                    Utils.qs('#edit-phone').value = user.phone || '';
+                    Utils.qs('#edit-address').value = user.address || '';
+                    Utils.qs('#edit-avatar-url').value = (user.avatar && !user.avatar.startsWith('data:')) ? user.avatar : '';
+                    
+                    editProfileModal.style.display = 'flex';
+                };
+            }
+
+            if (closeEditProfile && editProfileModal) {
+                closeEditProfile.onclick = () => editProfileModal.style.display = 'none';
+            }
+
+            if (editProfileForm) {
+                editProfileForm.onsubmit = async (e) => {
+                    e.preventDefault();
+                    const name = Utils.qs('#edit-name').value;
+                    const phone = Utils.qs('#edit-phone').value;
+                    const address = Utils.qs('#edit-address').value;
+                    const avatarUrl = Utils.qs('#edit-avatar-url').value;
+                    const avatarFile = Utils.qs('#edit-avatar-file').files[0];
+
+                    let avatar = avatarUrl;
+                    if (avatarFile) {
+                        avatar = await new Promise(resolve => {
+                            const reader = new FileReader();
+                            reader.onload = e => resolve(e.target.result);
+                            reader.readAsDataURL(avatarFile);
+                        });
+                    } else if (!avatar && State.currentUser.avatar && State.currentUser.avatar.startsWith('data:')) {
+                        // Keep existing data-uri avatar if no new URL/File provided
+                        avatar = State.currentUser.avatar;
+                    }
+
+                    // Update State
+                    State.currentUser = { ...State.currentUser, name, phone, address, avatar };
+                    
+                    // Update Users Array & Storage
+                    const idx = State.users.findIndex(u => u.email === State.currentUser.email);
+                    if (idx !== -1) {
+                        State.users[idx] = State.currentUser;
+                        localStorage.setItem('voxera_users', JSON.stringify(State.users));
+                    }
+                    localStorage.setItem('voxera_user', JSON.stringify(State.currentUser));
+
+                    // Update UI
+                    UI.renderProfile();
+                    Auth.updateUI(); 
+                    if (editProfileModal) editProfileModal.style.display = 'none';
+                };
+            }
         }
     };
 
