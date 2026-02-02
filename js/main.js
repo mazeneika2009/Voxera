@@ -737,6 +737,7 @@ document.addEventListener('DOMContentLoaded', () => {
             UI.initScrollAnimations();
             Auth.updateUI();
             Cart.updateUI();
+            App.setupSliders();
             App.setupListeners();
             App.route();
         },
@@ -791,10 +792,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const scroll = (dir) => {
                     const cardWidth = slider.children[0]?.offsetWidth || 300;
-                    slider.scrollBy({ left: dir * cardWidth, behavior: 'smooth' });
+                    const style = window.getComputedStyle(slider);
+                    const gap = parseInt(style.gap || 0) || 32;
+                    slider.scrollBy({ left: dir * (cardWidth + gap), behavior: 'smooth' });
                 };
                 prev.onclick = () => scroll(-1);
                 next.onclick = () => scroll(1);
+
+                // Mouse Drag Logic (Swipe)
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+
+                slider.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    slider.classList.add('active');
+                    startX = e.pageX - slider.offsetLeft;
+                    scrollLeft = slider.scrollLeft;
+                    if (container.autoScrollTimer) clearInterval(container.autoScrollTimer);
+                });
+
+                slider.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    slider.classList.remove('active');
+                    if (container.startAutoScroll) container.startAutoScroll();
+                });
+
+                slider.addEventListener('mouseup', () => {
+                    isDown = false;
+                    slider.classList.remove('active');
+                    if (container.startAutoScroll) container.startAutoScroll();
+                });
+
+                slider.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - slider.offsetLeft;
+                    const walk = (x - startX) * 2; // Scroll speed
+                    slider.scrollLeft = scrollLeft - walk;
+                });
+
+                // Auto-scroll for testimonials
+                if (container.classList.contains('testimonial-slider-container')) {
+                    container.startAutoScroll = () => {
+                        if (container.autoScrollTimer) clearInterval(container.autoScrollTimer);
+                        container.autoScrollTimer = setInterval(() => {
+                            const maxScroll = slider.scrollWidth - slider.clientWidth;
+                            if (slider.scrollLeft >= maxScroll - 10) {
+                                slider.scrollTo({ left: 0, behavior: 'smooth' });
+                            } else {
+                                scroll(1);
+                            }
+                        }, 5000);
+                    };
+                    
+                    container.startAutoScroll();
+                    
+                    // Touch events
+                    container.addEventListener('mouseenter', () => clearInterval(container.autoScrollTimer));
+                    container.addEventListener('mouseleave', () => {
+                        if (!isDown) container.startAutoScroll();
+                    });
+                    container.addEventListener('touchstart', () => clearInterval(container.autoScrollTimer), { passive: true });
+                    container.addEventListener('touchend', () => container.startAutoScroll());
+                }
             });
         },
 
@@ -1129,7 +1190,10 @@ const CircularGallery = {
         let viewportWidth = container.offsetWidth;
         let center = viewportWidth / 2;
         // Item width + gap (must match CSS)
-        const itemWidth = window.innerWidth < 768 ? 300 : 420; 
+        let itemWidth = 420;
+        if (window.innerWidth < 480) itemWidth = 220;
+        else if (window.innerWidth < 768) itemWidth = 300;
+        
         const totalWidth = items.length * itemWidth;
 
         // 4. Event Handlers

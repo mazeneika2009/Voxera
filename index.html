@@ -289,63 +289,82 @@
 
       <section id="testimonials" class="text-center">
         <h2 data-i18n="testimonials">What Our Users Say</h2>
-        <div class="testimonial-grid">
-          <div class="testimonial-card">
-            <p class="testimonial-text" data-i18n="testimText1">
-              "The quality of the fabrics combined with the AR experience is
-              unlike anything I've seen before. Voxera is truly the future."
-            </p>
-            <p class="testimonial-author" data-i18n="testimAuthor1">Alex Chen</p>
-            <p class="testimonial-role" data-i18n="testimRole1">Digital Artist</p>
+        <div class="testimonial-slider-container">
+          <button type="button" class="slider-btn prev-btn">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="testimonial-slider">
+            <div class="testimonial-card">
+              <i class="fas fa-quote-left testimonial-quote"></i>
+              <p class="testimonial-text" data-i18n="testimText1">
+                "The quality of the fabrics combined with the AR experience is
+                unlike anything I've seen before. Voxera is truly the future."
+              </p>
+              <div class="testimonial-author-info">
+                <p class="testimonial-author" data-i18n="testimAuthor1">Alex Chen</p>
+                <p class="testimonial-role" data-i18n="testimRole1">Digital Artist</p>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <i class="fas fa-quote-left testimonial-quote"></i>
+              <p class="testimonial-text" data-i18n="testimText2">
+                "I love how the clothes fit both my physical style and my digital
+                avatar. The cross-platform compatibility is seamless."
+              </p>
+              <div class="testimonial-author-info">
+                <p class="testimonial-author" data-i18n="testimAuthor2">Sarah Jenkins</p>
+                <p class="testimonial-role" data-i18n="testimRole2">Metaverse Explorer</p>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <i class="fas fa-quote-left testimonial-quote"></i>
+              <p class="testimonial-text" data-i18n="testimText3">
+                "Fast shipping, incredible packaging, and the product itself is a
+                masterpiece of design. Highly recommended."
+              </p>
+              <div class="testimonial-author-info">
+                <p class="testimonial-author" data-i18n="testimAuthor3">Marcus Thorne</p>
+                <p class="testimonial-role" data-i18n="testimRole3">Fashion Blogger</p>
+              </div>
+            </div>
           </div>
-          <div class="testimonial-card">
-            <p class="testimonial-text" data-i18n="testimText2">
-              "I love how the clothes fit both my physical style and my digital
-              avatar. The cross-platform compatibility is seamless."
-            </p>
-            <p class="testimonial-author" data-i18n="testimAuthor2">Sarah Jenkins</p>
-            <p class="testimonial-role" data-i18n="testimRole2">Metaverse Explorer</p>
-          </div>
-          <div class="testimonial-card">
-            <p class="testimonial-text" data-i18n="testimText3">
-              "Fast shipping, incredible packaging, and the product itself is a
-              masterpiece of design. Highly recommended."
-            </p>
-            <p class="testimonial-author" data-i18n="testimAuthor3">Marcus Thorne</p>
-            <p class="testimonial-role" data-i18n="testimRole3">Fashion Blogger</p>
-          </div>
+          <button type="button" class="slider-btn next-btn">
+            <i class="fas fa-chevron-right"></i>
+          </button>
         </div>
       </section>
 
       <section id="contact">
-        <h2 data-i18n="contactTitle">Get in Touch</h2>
-        <p data-i18n="contactSub">
-          Have a question or a collaboration idea? Drop us a line.
-        </p>
-        <form id="contact-form">
-          <div class="form-group">
-            <label for="contact-name" data-i18n="name">Your Name</label>
-            <input type="text" id="contact-name" name="name" required />
-          </div>
-          <div class="form-group">
-            <label for="contact-email" data-i18n="email">Your Email</label>
-            <input type="email" id="contact-email" name="email" required />
-          </div>
-          <div class="form-group">
-            <label for="contact-message" data-i18n="message"
-              >Your Message</label
-            >
-            <textarea
-              id="contact-message"
-              name="message"
-              rows="5"
-              required
-            ></textarea>
-          </div>
-          <button type="submit" class="cta-btn" data-i18n="send">
-            Send Message
-          </button>
-        </form>
+        <div class="contact-wrapper">
+          <h2 data-i18n="contactTitle">Get in Touch</h2>
+          <p data-i18n="contactSub">
+            Have a question or a collaboration idea? Drop us a line.
+          </p>
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="contact-name" data-i18n="name">Your Name</label>
+              <input type="text" id="contact-name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="contact-email" data-i18n="email">Your Email</label>
+              <input type="email" id="contact-email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="contact-message" data-i18n="message"
+                >Your Message</label
+              >
+              <textarea
+                id="contact-message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="cta-btn" data-i18n="send">
+              Send Message
+            </button>
+          </form>
+        </div>
       </section>
     </main>
 
