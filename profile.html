@@ -45,7 +45,7 @@
 
     <main>
         <section class="profile-container">
-            <h1 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;" data-i18n="myProfile">My Profile</h1>
+            <h1 data-i18n="myProfile">My Profile</h1>
             
             <div id="profile-content">
                 <div class="profile-wrapper">
@@ -54,23 +54,23 @@
                         <div class="profile-avatar">
                             <i class="fas fa-user-circle"></i>
                         </div>
-                        <button id="edit-profile-btn" class="cta-btn" style="width: 100%; margin-bottom: 1.5rem; background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); font-size: 0.9rem; padding: 0.5rem;" data-i18n="editProfile">Edit Profile</button>
-                        <h2 id="sidebar-name" style="font-size: 1.5rem; margin-bottom: 0.5rem;">User Name</h2>
-                        <p id="sidebar-email" style="color: var(--secondary-color); font-size: 0.9rem;">user@example.com</p>
+                        <button id="edit-profile-btn" class="cta-btn" data-i18n="editProfile">Edit Profile</button>
+                        <h2 id="sidebar-name">User Name</h2>
+                        <p id="sidebar-email">user@example.com</p>
                         
                         <div class="sidebar-menu">
                             <button class="menu-btn active" data-tab="info"><i class="fas fa-id-card" style="margin-right: 10px;"></i> <span data-i18n="personalInfo">Personal Info</span></button>
                             <button class="menu-btn" data-tab="orders"><i class="fas fa-box-open" style="margin-right: 10px;"></i> <span data-i18n="myOrders">My Orders</span></button>
                         </div>
                         
-                        <button id="logout-btn" class="cta-btn" style="width: 100%; margin-top: 2rem;" data-i18n="signOut">Sign Out</button>
+                        <button id="logout-btn" class="cta-btn" data-i18n="signOut">Sign Out</button>
                     </aside>
                     
                     <!-- Main Content -->
                     <div class="profile-content-area">
                         <!-- Personal Info Tab -->
                         <div id="tab-info" class="profile-tab active">
-                            <h3 style="margin-bottom: 2rem; border-bottom: 1px solid var(--accent-color); padding-bottom: 10px; display: inline-block;" data-i18n="personalInfo">Personal Information</h3>
+                            <h3 data-i18n="personalInfo">Personal Information</h3>
                             
                             <div class="info-row">
                                 <div class="info-group">
@@ -94,7 +94,7 @@
                                 </div>
                             </div>
                             
-                            <div class="info-row" style="border-bottom: none;">
+                            <div class="info-row no-border">
                                 <div class="info-group">
                                     <label data-i18n="memberSince">Member Since</label>
                                     <p id="profile-joined">January 2024</p>
@@ -104,7 +104,7 @@
 
                         <!-- Orders Tab -->
                         <div id="tab-orders" class="profile-tab">
-                            <h3 style="margin-bottom: 2rem; border-bottom: 1px solid var(--accent-color); padding-bottom: 10px; display: inline-block;" data-i18n="orderHistory">Order History</h3>
+                            <h3 data-i18n="orderHistory">Order History</h3>
                             <div id="order-history-container">
                                 <!-- Orders injected by JS -->
                             </div>
@@ -171,10 +171,10 @@
                         <i class="far fa-eye password-toggle" data-target="login-pass"></i>
                     </div>
                 </div>
-                <div style="text-align: right; margin-bottom: 15px;">
-                    <a href="#" id="forgot-pass-link" style="color: var(--accent-color); font-size: 0.9rem; text-decoration: none;" data-i18n="forgotPassword">Forgot Password?</a>
+                <div class="forgot-pass-link-container">
+                    <a href="#" id="forgot-pass-link" data-i18n="forgotPassword">Forgot Password?</a>
                 </div>
-                <button type="submit" class="cta-btn" style="width: 100%;" data-i18n="login">Login</button>
+                <button type="submit" class="cta-btn auth-btn" data-i18n="login">Login</button>
             </form>
             <form id="signup-form" class="auth-form">
                 <div class="form-group"><label data-i18n="fullName">Full Name</label><input type="text" id="signup-name" required></div>
@@ -190,18 +190,18 @@
                     <label data-i18n="profilePhotoOptional">Profile Photo (Optional)</label>
                     <input type="file" id="signup-avatar" accept="image/*">
                 </div>
-                <button type="submit" class="cta-btn" style="width: 100%;" data-i18n="createAccount">Create Account</button>
+                <button type="submit" class="cta-btn auth-btn" data-i18n="createAccount">Create Account</button>
             </form>
             <form id="forgot-pass-form" class="auth-form">
-                <h3 style="margin-bottom: 1.5rem; text-align: center;" data-i18n="resetPassword">Reset Password</h3>
-                <p style="margin-bottom: 1.5rem; color: var(--secondary-color); text-align: center; font-size: 0.9rem;" data-i18n="enterEmailReset">Enter your email address and we'll send you a link to reset your password.</p>
+                <h3 data-i18n="resetPassword">Reset Password</h3>
+                <p class="forgot-pass-intro" data-i18n="enterEmailReset">Enter your email address and we'll send you a link to reset your password.</p>
                 <div class="form-group">
                     <label data-i18n="emailAddr">Email Address</label>
                     <input type="email" id="forgot-email" required>
                 </div>
-                <button type="submit" class="cta-btn" style="width: 100%;" data-i18n="sendResetLink">Send Reset Link</button>
-                <div style="text-align: center; margin-top: 1rem;">
-                    <a href="#" id="back-to-login" style="color: var(--secondary-color); font-size: 0.9rem; text-decoration: none;" data-i18n="backToLogin">Back to Login</a>
+                <button type="submit" class="cta-btn auth-btn" data-i18n="sendResetLink">Send Reset Link</button>
+                <div class="back-to-login-container">
+                    <a href="#" id="back-to-login" data-i18n="backToLogin">Back to Login</a>
                 </div>
             </form>
         </div>
@@ -233,7 +233,7 @@
                     <label data-i18n="orUploadPhoto">Or Upload Photo</label>
                     <input type="file" id="edit-avatar-file" accept="image/*">
                 </div>
-                <button type="submit" class="cta-btn" style="width: 100%;" data-i18n="saveChanges">Save Changes</button>
+                <button type="submit" class="cta-btn auth-btn" data-i18n="saveChanges">Save Changes</button>
             </form>
         </div>
     </div>
