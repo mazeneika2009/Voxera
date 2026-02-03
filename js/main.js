@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         users: JSON.parse(localStorage.getItem('voxera_users')) || [],
         currentUser: JSON.parse(localStorage.getItem('voxera_user')) || null,
         orders: JSON.parse(localStorage.getItem('voxera_orders')) || {},
-        products: [...products],
+        products: JSON.parse(localStorage.getItem('voxera_products')) || [...products],
         collections: [...collections],
         itemsToShow: CONFIG.itemsPerPage,
         scrollObserver: null,
@@ -725,6 +725,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // --- RealTime Module -------------------------------------------------------
+    const RealTime = {
+        init: () => {
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'voxera_products') {
+                    State.products = JSON.parse(e.newValue) || [];
+                    if (Utils.qs('.product-grid')) Products.renderGrid();
+                }
+                if (e.key === 'voxera_orders') {
+                    State.orders = JSON.parse(e.newValue) || {};
+                    if (Utils.qs('.profile-container')) UI.renderProfile();
+                }
+                if (e.key === 'voxera_users') {
+                    State.users = JSON.parse(e.newValue) || [];
+                }
+            });
+        }
+    };
+
     // --- Initialization & Event Listeners --------------------------------------
     const App = {
         init: () => {
@@ -734,6 +753,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             Theme.init();
             Localization.init();
+            RealTime.init();
             UI.initScrollAnimations();
             Auth.updateUI();
             Cart.updateUI();

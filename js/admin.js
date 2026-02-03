@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // --- State & Data ----------------------------------------------------------
     const State = {
-        products: [...products],
+        products: JSON.parse(localStorage.getItem('voxera_products')) || [...products],
         isLoggedIn: false
     };
 
@@ -94,6 +94,19 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             const btn = qs('#lang-toggle');
             if (btn) btn.textContent = lang === 'en' ? 'AR' : 'EN';
+        }
+    };
+
+    // --- RealTime Module -------------------------------------------------------
+    const RealTime = {
+        init: () => {
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'voxera_products') {
+                    State.products = JSON.parse(e.newValue) || [];
+                    UI.renderTable();
+                    UI.updateStats();
+                }
+            });
         }
     };
 
@@ -195,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
         deleteProduct: (id) => {
             if (confirm('Delete this product?')) {
                 State.products = State.products.filter(p => p.id !== id);
+                localStorage.setItem('voxera_products', JSON.stringify(State.products));
                 UI.renderTable();
                 UI.updateStats();
             }
@@ -228,13 +242,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (id) {
                 const idx = State.products.findIndex(p => p.id == id);
                 if (idx !== -1) {
+                    const oldImage = State.products[idx].image;
                     State.products[idx] = { ...State.products[idx], ...productData };
-                    if (!image) State.products[idx].image = State.products[idx].image; // Keep old if no new
+                    if (!image) State.products[idx].image = oldImage;
                 }
             } else {
                 const newId = State.products.length ? Math.max(...State.products.map(p => p.id)) + 1 : 1;
                 State.products.push({ id: newId, ...productData });
             }
+            
+            localStorage.setItem('voxera_products', JSON.stringify(State.products));
 
             qs('#admin-modal').style.display = 'none';
             UI.renderTable();
@@ -302,4 +319,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Init Theme & Localization
     Theme.init();
     Localization.init();
+    RealTime.init();
 });

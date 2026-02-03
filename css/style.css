@@ -273,8 +273,8 @@ main>section {
     will-change: transform;
     transform: translate(0, 0);
     transition:
-        transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.8s ease;
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.4s ease;
 }
 
 /* Slight depth for realism */
@@ -314,7 +314,7 @@ main>section {
     width: 0;
     max-width: fit-content;
     will-change: width;
-    animation: typing 10s steps(6, end) infinite, blink 0.75s step-end infinite;
+    animation: typing 3.5s steps(6, end) infinite, blink 0.75s step-end infinite;
 }
 
 .hero-text p {
