@@ -116,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
             qsa('header, main, footer').forEach(el => el.style.display = '');
             UI.renderTable();
             UI.updateStats();
-            UI.initAnimations();
         },
 
         updateStats: () => {
@@ -184,22 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 qs('#product-id').value = '';
             }
             modal.style.display = 'flex';
-        },
-
-        initAnimations: () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.2 });
-
-            qsa('.stat-card, .admin-header, .admin-table, .footer-section').forEach(el => {
-                el.classList.add('reveal');
-                observer.observe(el);
-            });
         }
     };
 

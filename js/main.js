@@ -18,8 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         products: JSON.parse(localStorage.getItem('voxera_products')) || [...products],
         collections: [...collections],
         itemsToShow: CONFIG.itemsPerPage,
-        scrollObserver: null,
-        isParallaxTicking: false
+        isParallaxTicking: false,
     };
 
     // --- Utilities -------------------------------------------------------------
@@ -458,6 +457,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // --- Collections Module ----------------------------------------------------
+    const Collections = {
+        createCard: (collection) => {
+            const card = document.createElement('a');
+            const t = Localization.translations[Localization.lang];
+            card.className = 'collection-card';
+            card.href = `collection.html?category=${encodeURIComponent(collection.category)}`;
+
+            const imgUrl = Utils.getImage(collection.imageJpg);
+
+            card.innerHTML = `
+                <img src="${imgUrl}" alt="${collection.altText}" class="collection-card-image" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${CONFIG.fallbackImage}';">
+                <div class="collection-info">
+                    <h3>${collection.title}</h3>
+                    <span class="collection-link">${t.discover}</span>
+                </div>
+            `;
+
+            return card;
+        }
+    };
+
     // --- Products Module -------------------------------------------------------
     const Products = {
         createCard: (product, className = 'product-card') => {
@@ -476,8 +497,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>${Utils.formatPrice(product.price)}</p>
             `;
 
-            card.classList.add('reveal');
-            if (State.scrollObserver) State.scrollObserver.observe(card);
             return card;
         },
 
@@ -585,23 +604,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- UI Module -------------------------------------------------------------
     const UI = {
-        initScrollAnimations: () => {
-            State.scrollObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        State.scrollObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-
-            const animClasses = ['reveal', 'reveal-right', 'reveal-left', 'reveal-scale'];
-            Utils.qsa('.reveal, .reveal-right, .reveal-left, .reveal-scale, section > h2, .hero-text, .collection-card, .lookbook-item, .testimonial-card, .footer-section').forEach(el => {
-                const hasClass = animClasses.some(cls => el.classList.contains(cls));
-                if (!hasClass) el.classList.add('reveal');
-                State.scrollObserver.observe(el);
-            });
-        },
 
         hideDetail: () => {
             const modal = Utils.qs('#product-detail');
@@ -754,7 +756,6 @@ document.addEventListener('DOMContentLoaded', () => {
             Theme.init();
             Localization.init();
             RealTime.init();
-            UI.initScrollAnimations();
             Auth.updateUI();
             Cart.updateUI();
             App.setupSliders();
@@ -777,30 +778,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
         renderHome: () => {
             // New Arrivals
-            const slider = Utils.qs('#new-arrivals .collection-slider');
-            if (slider) {
+            const newArrivalsSlider = Utils.qs('#new-arrivals .collection-slider');
+            if (newArrivalsSlider) {
                 const fragment = document.createDocumentFragment();
-                State.products.filter(p => p.newArrival).slice(0, 5).forEach((p, index) => {
+                State.products.filter(p => p.newArrival).slice(0, 6).forEach((p, index) => {
                     const card = Products.createCard(p, 'featured-card');
                     card.style.transitionDelay = `${index * 0.1}s`;
                     fragment.appendChild(card);
                 });
-                slider.appendChild(fragment);
+                newArrivalsSlider.appendChild(fragment);
             }
 
             // Collections
-            const shopContainer = Utils.qs('#shop .collection-slider-container');
-            if (shopContainer) {
-                // Initialize the high-performance circular gallery
-                // replacing the standard slider
-                CircularGallery.init(shopContainer, State.collections);
+            const collectionsSlider = Utils.qs('#shop .collection-slider');
+            if (collectionsSlider) {
+                const fragment = document.createDocumentFragment();
+                State.collections.forEach((c, index) => {
+                    const card = Collections.createCard(c);
+                    card.style.transitionDelay = `${index * 0.1}s`;
+                    fragment.appendChild(card);
+                });
+                collectionsSlider.appendChild(fragment);
             }
 
             // Intro Animation Trigger
-            window.addEventListener("load", () => {
-                const stack = document.querySelector(".image-stack");
-                if (stack) stack.classList.add("disperse");
-            });
+            // PERFORMANCE: Trigger immediately, don't wait for full window load
+            const stack = document.querySelector(".image-stack");
+            if (stack) {
+                requestAnimationFrame(() => stack.classList.add("disperse"));
+            }
         },
 
         setupSliders: () => {
@@ -1166,146 +1172,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start App
     App.init();
 });
-
-// --- Circular Gallery Module (High Performance) ----------------------------
-const CircularGallery = {
-    init: (container, items) => {
-        if (!container || !items.length) return;
-
-        // 1. Performance & Device Detection
-        // Detect low-end devices (small screens or low pixel density) to reduce effects
-        const isLowEnd = window.innerWidth < 768 || (window.devicePixelRatio || 1) < 1.5;
-        
-        // 2. Setup DOM Structure
-        container.innerHTML = ''; // Clear existing buttons/slider
-        container.className = 'cg-container'; // Switch to gallery class
-        
-        const track = document.createElement('div');
-        track.className = 'cg-track';
-        container.appendChild(track);
-
-        // Create Items
-        const itemEls = items.map((item, i) => {
-            const el = document.createElement('div');
-            el.className = 'cg-item';
-            // Add click handler for navigation
-            el.onclick = () => window.location.href = `collection.html?category=${item.category}`;
-            el.innerHTML = `
-                <div class="cg-img-wrapper">
-                    <img src="${item.imageJpg}" alt="${item.title}" draggable="false" loading="eager">
-                </div>
-                <h3>${item.title}</h3>
-            `;
-            track.appendChild(el);
-            return { el, index: i };
-        });
-
-        // 3. Animation State
-        let scroll = 0;
-        let velocity = 0;
-        let isDragging = false;
-        let lastX = 0;
-        
-        // Metrics (Cached)
-        let viewportWidth = container.offsetWidth;
-        let center = viewportWidth / 2;
-        // Item width + gap (must match CSS)
-        let itemWidth = 420;
-        if (window.innerWidth < 480) itemWidth = 220;
-        else if (window.innerWidth < 768) itemWidth = 300;
-        
-        const totalWidth = items.length * itemWidth;
-
-        // 4. Event Handlers
-        const onResize = () => {
-            viewportWidth = container.offsetWidth;
-            center = viewportWidth / 2;
-        };
-        window.addEventListener('resize', onResize);
-
-        const onStart = (x) => {
-            isDragging = true;
-            lastX = x;
-            velocity = 0; // Reset momentum on grab
-            track.style.cursor = 'grabbing';
-        };
-
-        const onMove = (x) => {
-            if (!isDragging) return;
-            const delta = x - lastX;
-            lastX = x;
-            velocity = delta; // Track velocity for throw effect
-            scroll += delta;
-        };
-
-        const onEnd = () => {
-            isDragging = false;
-            track.style.cursor = 'grab';
-        };
-
-        // Bind Events (Passive for performance)
-        container.addEventListener('mousedown', e => onStart(e.clientX));
-        window.addEventListener('mousemove', e => onMove(e.clientX));
-        window.addEventListener('mouseup', onEnd);
-        
-        container.addEventListener('touchstart', e => onStart(e.touches[0].clientX), { passive: true });
-        window.addEventListener('touchmove', e => onMove(e.touches[0].clientX), { passive: true });
-        window.addEventListener('touchend', onEnd);
-        
-        container.addEventListener('wheel', e => {
-            // Optional: Horizontal scroll mapping
-            velocity -= e.deltaY * 0.2; 
-        }, { passive: true });
-
-        // 5. Render Loop (60fps target)
-        const update = () => {
-            // Physics
-            if (!isDragging) {
-                velocity *= 0.95; // Friction
-                scroll += velocity;
-            }
-
-            // Render Items
-            for (let i = 0; i < itemEls.length; i++) {
-                const { el, index } = itemEls[i];
-                
-                // Infinite Loop Logic: Calculate distance from center in "world space"
-                // (index * width + scroll) % total gives wrapped position
-                let dist = ((index * itemWidth + scroll) % totalWidth + totalWidth) % totalWidth;
-                if (dist > totalWidth / 2) dist -= totalWidth;
-
-                // Screen Position
-                const screenX = center + dist - (itemWidth / 2);
-
-                // Optimization: Cull items outside viewport (with buffer)
-                if (screenX < -itemWidth || screenX > viewportWidth + itemWidth) {
-                    el.style.transform = 'translate3d(-9999px, 0, 0)'; // Move off-screen cheaply
-                    continue;
-                }
-
-                // Visual Effects based on distance from center
-                // Normalize distance (-1 to 1 relative to half viewport)
-                const ratio = dist / (viewportWidth / 1.5); 
-                
-                if (isLowEnd) {
-                    // Low-End: Simple translation only
-                    el.style.transform = `translate3d(${screenX}px, 0, 0)`;
-                } else {
-                    // High-End: Arc, Rotate, Scale, Opacity
-                    const scale = 1 - Math.abs(ratio) * 0.2;
-                    const y = Math.pow(ratio, 2) * 60; // Parabolic arc
-                    const rotate = ratio * 15; // Rotation based on X
-                    const zIndex = 100 - Math.round(Math.abs(dist) / 10);
-
-                    el.style.transform = `translate3d(${screenX}px, ${y}px, 0) rotate(${rotate}deg) scale(${scale})`;
-                    el.style.opacity = 1 - Math.abs(ratio) * 0.5;
-                    el.style.zIndex = zIndex;
-                }
-            }
-
-            requestAnimationFrame(update);
-        };
-
-        requestAnimationFrame(update);
-    }
-};

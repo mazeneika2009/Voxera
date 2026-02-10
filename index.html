@@ -7,18 +7,14 @@
     <link rel="icon" type="image/x-icon" href="asset/image/favicon.ico">
     <!-- PERFORMANCE: Preconnect to third-party origins -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-    <!--
-        PERFORMANCE OPTIMIZATION: Critical CSS
-        In a production build, the CSS for above-the-fold content would be inlined here.
-        The main stylesheet is loaded asynchronously to prevent render-blocking.
-    -->
-    <link
-      rel="stylesheet"
-      href="css/style.css"
-      media="print"
-      onload="this.media = 'all'"
-    />
-    <noscript><link rel="stylesheet" href="css/style.css" /></noscript>
+    
+    <!-- PERFORMANCE: Preload Critical Hero Images -->
+    <link rel="preload" as="image" href="asset/image/home1.png" fetchpriority="high">
+    <link rel="preload" as="image" href="asset/image/home3.png" fetchpriority="high">
+
+    <!-- CSS: Load synchronously to prevent layout shifts (FOUC) -->
+    <link rel="stylesheet" href="css/style.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -95,11 +91,15 @@
               src="asset/image/home1.png"
               class="img img-1"
               alt="Voxera Home 1"
+              fetchpriority="high"
+              decoding="async"
             />
             <img
               src="asset/image/home3.png"
               class="img img-3"
               alt="Voxera Home 3"
+              fetchpriority="high"
+              decoding="async"
             />
          </div>
         </div>
@@ -107,51 +107,16 @@
 
       <section id="new-arrivals" class="text-center">
         <h2 data-i18n="newArrivals">New Arrivals</h2>
-        <div class="slider-3d-viewport">
-          <div class="slider-3d-spinner">
-            <div class="slider-3d-item" style="--i:0;" data-product-id="1">
-              <img src="asset/image/1.jpg" alt="Neural Link Hoodie" loading="lazy">
-              <div class="slider-caption">
-                <h3>Neural Link Hoodie</h3>
-                <p>$89.99</p>
-              </div>
-            </div>
-            <div class="slider-3d-item" style="--i:1;" data-product-id="2">
-              <img src="asset/image/2.jpg" alt="Voxera Basic Tee" loading="lazy">
-              <div class="slider-caption">
-                <h3>Voxera Basic Tee</h3>
-                <p>$35.00</p>
-              </div>
-            </div>
-            <div class="slider-3d-item" style="--i:2;" data-product-id="3">
-              <img src="asset/image/3.jpg" alt="Heavy Duty Cargo" loading="lazy">
-              <div class="slider-caption">
-                <h3>Heavy Duty Cargo</h3>
-                <p>$95.00</p>
-              </div>
-            </div>
-            <div class="slider-3d-item" style="--i:3;" data-product-id="4">
-              <img src="asset/image/4.jpg" alt="Glow Runner Jacket" loading="lazy">
-              <div class="slider-caption">
-                <h3>Glow Runner Jacket</h3>
-                <p>$130.00</p>
-              </div>
-            </div>
-            <div class="slider-3d-item" style="--i:4;" data-product-id="5">
-              <img src="asset/image/5.jpg" alt="Asymmetric Drape Coat" loading="lazy">
-              <div class="slider-caption">
-                <h3>Asymmetric Drape Coat</h3>
-                <p>$220.00</p>
-              </div>
-            </div>
-            <div class="slider-3d-item" style="--i:5;" data-product-id="6">
-              <img src="asset/image/6.jpg" alt="Tactical Shell" loading="lazy">
-              <div class="slider-caption">
-                <h3>Tactical Shell</h3>
-                <p>$180.00</p>
-              </div>
-            </div>
+        <div class="collection-slider-container">
+          <button type="button" class="slider-btn prev-btn">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="collection-slider">
+            <!-- New arrivals will be dynamically injected here by JavaScript -->
           </div>
+          <button type="button" class="slider-btn next-btn">
+            <i class="fas fa-chevron-right"></i>
+          </button>
         </div>
       </section>
 
@@ -273,7 +238,7 @@
           <img
             src="asset/image/about.png"
             alt="About Voxera"
-            class="about-image reveal-right"
+            class="about-image"
             loading="lazy"
             decoding="async"
           />
