@@ -167,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Use translation for title if possible, or fallback
             qs('#modal-title').textContent = title === 'Add Product' ? Localization.translations[Localization.lang].modalAddTitle : Localization.translations[Localization.lang].modalEditTitle;
+            qs('#modal-title').dataset.i18n = title === 'Add Product' ? 'modalAddTitle' : 'modalEditTitle';
             form.reset();
 
             if (product) {

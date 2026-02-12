@@ -122,18 +122,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadMore: "Load More",
                 // FAQ Page
                 faqTitle: "Frequently Asked Questions",
-                faqQ1: "How does the digital sizing work?",
-                faqA1: "Our clothing is designed with standard international sizing. For our digital-only items, files are compatible with most major 3D avatars and metaverse platforms.",
-                faqQ2: "Do you ship internationally?",
-                faqA2: "Yes, Voxera ships to over 50 countries worldwide. Shipping times vary based on location, but typically range from 5-10 business days.",
-                faqQ3: "What is the return policy?",
-                faqA3: "Physical items can be returned within 30 days of receipt if they are unworn and in original packaging. Digital assets are non-refundable once downloaded.",
-                faqQ4: "Are the materials sustainable?",
-                faqA4: "Absolutely. We use a blend of recycled synthetics and organic cottons. Our goal is to minimize our carbon footprint while maximizing durability."
+                faqQ1: "How do I find my size?",
+                faqA1: "We recommend referring to our detailed size guide located on each product page. Our cuts are generally true to size, but for an oversized aesthetic, we suggest sizing up.",
+                faqQ2: "What materials do you use?",
+                faqA2: "Voxera utilizes premium, heavyweight cottons, technical nylons, and sustainable blends. Each garment is crafted for durability and comfort.",
+                faqQ3: "How should I care for my garments?",
+                faqA3: "To ensure longevity, wash on cold with like colors and hang dry. Avoid harsh detergents and tumble drying to preserve the fabric integrity and print quality.",
+                faqQ4: "Do you offer international shipping?",
+                faqA4: "Yes, we ship globally. Orders are processed within 24-48 hours, and international delivery typically takes 5-12 business days depending on the destination."
             },
             ar: {
                 home: "الرئيسية", shop: "المتجر", about: "من نحن", contact: "تواصل معنا", faq: "الأسئلة الشائعة",
-                heroTitle: "Vexora", heroSubtitle: "الأزياء كبنية. الأسلوب كتطور.", discover: "اكتشف المزيد",
+                heroTitle: "Voxera", heroSubtitle: "الأزياء كبنية. الأسلوب كتطور.", discover: "اكتشف المزيد",
                 newArrivals: "وصل حديثاً", lookbook: "معرض الأناقة", collections: "المجموعات",
                 lookbookTitle1: "المستكشف الحضري", lookbookDesc1: "الجمع بين الملابس التقنية الوظيفية والجماليات البسيطة لمشهد المدينة الحديث.",
                 lookbookTitle2: "الرحالة الرقمي", lookbookDesc2: "الراحة والأناقة لحياة مليئة بالحركة. قطع متعددة الاستخدامات تتكيف مع أي بيئة.",
@@ -183,14 +183,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadMore: "تحميل المزيد",
                 // FAQ Page
                 faqTitle: "الأسئلة الشائعة",
-                faqQ1: "كيف يعمل التحجيم الرقمي؟",
-                faqA1: "تم تصميم ملابسنا بأحجام دولية قياسية. بالنسبة للعناصر الرقمية فقط، تتوافق الملفات مع معظم الصور الرمزية ثلاثية الأبعاد ومنصات الميتافيرس الرئيسية.",
-                faqQ2: "هل تشحنون دوليًا؟",
-                faqA2: "نعم، تشحن فوكسيرا إلى أكثر من 50 دولة حول العالم. تختلف أوقات الشحن حسب الموقع، ولكنها تتراوح عادةً من 5 إلى 10 أيام عمل.",
-                faqQ3: "ما هي سياسة الإرجاع؟",
-                faqA3: "يمكن إرجاع العناصر المادية في غضون 30 يومًا من استلامها إذا لم يتم ارتداؤها وفي عبوتها الأصلية. الأصول الرقمية غير قابلة للاسترداد بمجرد تنزيلها.",
-                faqQ4: "هل المواد مستدامة؟",
-                faqA4: "بالتأكيد. نحن نستخدم مزيجًا من المواد الاصطناعية المعاد تدويرها والقطن العضوي. هدفنا هو تقليل بصمتنا الكربونية مع زيادة المتانة."
+                faqQ1: "كيف أجد مقاسي؟",
+                faqA1: "نوصي بالرجوع إلى دليل المقاسات المفصل في صفحة كل منتج. قصاتنا مطابقة للمقاس، ولكن للمظهر الواسع، نقترح اختيار مقاس أكبر.",
+                faqQ2: "ما هي المواد المستخدمة؟",
+                faqA2: "تستخدم فوكسيرا أقطانًا فاخرة ونايلون تقني ومواد مستدامة. تم تصميم كل قطعة لضمان المتانة والراحة.",
+                faqQ3: "كيف أعتني بملابسي؟",
+                faqA3: "لضمان الجودة، اغسل بالماء البارد وعلقها لتجف. تجنب التجفيف الآلي للحفاظ على القماش.",
+                faqQ4: "هل تشحنون دوليًا؟",
+                faqA4: "نعم، نشحن لجميع أنحاء العالم. تتم المعالجة خلال 24-48 ساعة، ويستغرق التوصيل 5-12 يوم عمل."
             }
         },
 
@@ -471,7 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${imgUrl}" alt="${collection.altText}" class="collection-card-image" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${CONFIG.fallbackImage}';">
                 <div class="collection-info">
                     <h3>${collection.title}</h3>
-                    <span class="collection-link">${t.discover}</span>
+                    <span class="collection-link" data-i18n="discover">${t.discover}</span>
                 </div>
             `;
 
@@ -501,51 +501,91 @@ document.addEventListener('DOMContentLoaded', () => {
         },
 
         renderGrid: () => {
-            const grid = Utils.qs('.product-grid');
-            if (!grid) return;
+            const container = Utils.qs('#products-container');
+            if (!container) return;
 
-            const params = new URLSearchParams(window.location.search);
-            const category = params.get('category');
-            const searchTerm = (Utils.qs('#shop-search')?.value || '').toLowerCase();
             const sortValue = Utils.qs('#shop-sort')?.value || 'default';
+            const searchValue = Utils.qs('#shop-search')?.value.toLowerCase() || '';
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryParam = urlParams.get('category');
 
-            let filtered = State.products;
+            container.innerHTML = '';
 
-            if (category) {
-                filtered = filtered.filter(p => p.category?.toLowerCase() === category.toLowerCase());
-                const title = Utils.qs('#shop h2');
-                if (title) title.textContent = `${category} Collection`;
-                UI.renderCollectionFeatures(category);
-            } else {
-                UI.toggleCollectionFeatures(false);
-            }
-
-            if (searchTerm) {
-                filtered = filtered.filter(p => p.name.toLowerCase().includes(searchTerm));
-            }
-
-            if (sortValue === 'price-asc') filtered.sort((a, b) => a.price - b.price);
-            if (sortValue === 'price-desc') filtered.sort((a, b) => b.price - a.price);
-
-            grid.innerHTML = '';
-            const fragment = document.createDocumentFragment();
-            const loadMoreBtn = Utils.qs('#load-more-btn');
-
-            if (filtered.length === 0) {
-                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 2rem;">No products found.</p>';
-                if (loadMoreBtn) loadMoreBtn.style.display = 'none';
-                return;
-            }
-
-            filtered.slice(0, State.itemsToShow).forEach((p, index) => {
-                const card = Products.createCard(p);
-                card.style.transitionDelay = `${(index % CONFIG.itemsPerPage) * 0.1}s`; // Stagger effect
-                fragment.appendChild(card);
+            // Filter products
+            let filtered = State.products.filter(p => {
+                const matchesSearch = p.name.toLowerCase().includes(searchValue) || 
+                                      p.category.toLowerCase().includes(searchValue);
+                const matchesCategory = categoryParam ? p.category === categoryParam : true;
+                return matchesSearch && matchesCategory;
             });
-            grid.appendChild(fragment);
 
-            if (loadMoreBtn) {
-                loadMoreBtn.style.display = filtered.length > State.itemsToShow ? 'inline-block' : 'none';
+            // If searching, sorting, or filtering by specific category, show flat grid
+            if (searchValue || sortValue !== 'default' || categoryParam) {
+                const sortFn = (a, b) => {
+                    if (sortValue === 'price-asc') return a.price - b.price;
+                    if (sortValue === 'price-desc') return b.price - a.price;
+                    return 0;
+                };
+
+                if (sortValue !== 'default') filtered.sort(sortFn);
+
+                if (filtered.length === 0) {
+                    container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 2rem;">No products found.</p>';
+                    const loadMoreBtn = Utils.qs('#load-more-btn');
+                    if (loadMoreBtn) loadMoreBtn.style.display = 'none';
+                    return;
+                }
+
+                const grid = document.createElement('div');
+                grid.className = 'product-grid';
+
+                filtered.slice(0, State.itemsToShow).forEach((p, index) => {
+                    const card = Products.createCard(p);
+                    card.style.transitionDelay = `${(index % CONFIG.itemsPerPage) * 0.1}s`;
+                    grid.appendChild(card);
+                });
+                container.appendChild(grid);
+
+                const loadMoreBtn = Utils.qs('#load-more-btn');
+                if (loadMoreBtn) {
+                    loadMoreBtn.style.display = filtered.length > State.itemsToShow ? 'inline-block' : 'none';
+                }
+            } else {
+                // Default View: Grouped by Category
+                const loadMoreBtn = Utils.qs('#load-more-btn');
+                if (loadMoreBtn) loadMoreBtn.style.display = 'none';
+
+                const categories = [...new Set(filtered.map(p => p.category))].sort();
+
+                categories.forEach(cat => {
+                    const catProducts = filtered.filter(p => p.category === cat);
+                    if (catProducts.length === 0) return;
+
+                    const section = document.createElement('div');
+                    section.className = 'category-section';
+                    section.style.marginBottom = '4rem';
+
+                    const heading = document.createElement('h2');
+                    heading.textContent = cat;
+                    heading.style.textAlign = 'left';
+                    heading.style.fontSize = '2rem';
+                    heading.style.marginBottom = '2rem';
+                    heading.style.borderBottom = '1px solid var(--border-color)';
+                    heading.style.paddingBottom = '1rem';
+                    section.appendChild(heading);
+
+                    const grid = document.createElement('div');
+                    grid.className = 'product-grid';
+
+                    catProducts.forEach((p, index) => {
+                        const card = Products.createCard(p);
+                        card.style.transitionDelay = `${(index % 4) * 0.1}s`;
+                        grid.appendChild(card);
+                    });
+
+                    section.appendChild(grid);
+                    container.appendChild(section);
+                });
             }
         },
 
@@ -560,80 +600,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Sizes
             const sizeSelect = Utils.qs('#size');
-            sizeSelect.innerHTML = '';
-            (product.sizes || ['S', 'M', 'L', 'XL']).forEach(size => {
-                const opt = document.createElement('option');
-                opt.value = size;
-                opt.textContent = size;
-                opt.style.color = 'black';
-                sizeSelect.appendChild(opt);
-            });
+            if (sizeSelect) {
+                sizeSelect.innerHTML = '';
+                (product.sizes || ['S', 'M', 'L', 'XL']).forEach(size => {
+                    const opt = document.createElement('option');
+                    opt.value = size;
+                    opt.textContent = size;
+                    opt.style.color = 'black';
+                    sizeSelect.appendChild(opt);
+                });
+            }
 
             // Colors
-            const colorsContainer = Utils.qs('#detail-colors');
-            colorsContainer.innerHTML = '';
-            const colors = product.colors || ['#000000'];
-            let selectedColor = colors[0];
+            const colorContainer = Utils.qs('#detail-colors');
+            let selectedColor = null;
+            if (colorContainer) {
+                colorContainer.innerHTML = '';
+                (product.colors || ['#000']).forEach((color, idx) => {
+                    const div = document.createElement('div');
+                    div.className = 'color-option';
+                    div.style.backgroundColor = color;
+                    if (idx === 0) {
+                        div.classList.add('selected');
+                        selectedColor = color;
+                    }
+                    div.onclick = () => {
+                        selectedColor = color;
+                        Utils.qsa('.color-option').forEach(el => el.classList.remove('selected'));
+                        div.classList.add('selected');
+                    };
+                    colorContainer.appendChild(div);
+                });
+            }
 
-            colors.forEach((color, idx) => {
-                const div = document.createElement('div');
-                div.className = `color-option ${idx === 0 ? 'selected' : ''}`;
-                div.style.backgroundColor = color;
-                div.onclick = () => {
-                    selectedColor = color;
-                    Utils.qsa('.color-option').forEach(el => el.classList.remove('selected'));
-                    div.classList.add('selected');
+            // Add to Cart
+            const addBtn = modal.querySelector('.add-to-cart-btn');
+            if (addBtn) {
+                const newBtn = addBtn.cloneNode(true);
+                addBtn.parentNode.replaceChild(newBtn, addBtn);
+                newBtn.onclick = () => {
+                    const size = sizeSelect ? sizeSelect.value : 'M';
+                    const color = selectedColor || (product.colors ? product.colors[0] : '#000');
+                    Cart.add(product.id, color, size);
+                    UI.hideDetail();
                 };
-                colorsContainer.appendChild(div);
-            });
-
-            // Add to Cart Button
-            const btn = Utils.qs('.add-to-cart-btn');
-            const newBtn = btn.cloneNode(true);
-            btn.parentNode.replaceChild(newBtn, btn);
-            newBtn.onclick = () => {
-                Cart.add(product.id, selectedColor, sizeSelect.value);
-                UI.hideDetail();
-            };
+            }
 
             modal.classList.add('visible');
-            gsap.fromTo(modal, { opacity: 0 }, { opacity: 1, duration: 0 });
-            gsap.fromTo(modal.querySelector('.product-detail-content'), { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0 });
+            gsap.fromTo(modal.querySelector('.product-detail-content'), { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3 });
         }
     };
 
-    // --- UI Module -------------------------------------------------------------
     const UI = {
-
         hideDetail: () => {
             const modal = Utils.qs('#product-detail');
-            if (modal) {
-                gsap.to(modal, { opacity: 0, duration: 0.2, onComplete: () => modal.classList.remove('visible') });
-            }
+            if (modal) modal.classList.remove('visible');
         },
 
         handleParallax: () => {
-            const hero = Utils.qs('#home');
-            if (!hero) return;
-
-            const scrollPosition = window.scrollY;
-
-            if (!State.isParallaxTicking) {
-                window.requestAnimationFrame(() => {
-                    // Apply parallax effect by moving background at half the scroll speed
-                    hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
-                    State.isParallaxTicking = false;
-                });
-                State.isParallaxTicking = true;
-            }
+            if (State.isParallaxTicking) return;
+            window.requestAnimationFrame(() => {
+                const hero = Utils.qs('#home');
+                if (hero) {
+                    const scrolled = window.scrollY;
+                    hero.style.backgroundPositionY = `${scrolled * 0.5}px`;
+                }
+                State.isParallaxTicking = false;
+            });
+            State.isParallaxTicking = true;
         },
 
         renderCollectionFeatures: (category) => {
             // Mock feature data
             const features = {
-                'Cybernetic': { desc: "Integrated circuitry.", stats: { "Tech": "High", "Style": "Futuristic" } },
-                'Minimalist': { desc: "Less is more.", stats: { "Tech": "Low", "Style": "Clean" } }
-                // Add others as needed
+
             };
 
             const container = Utils.qs('#collection-features');
