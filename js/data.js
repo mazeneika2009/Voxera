@@ -89,7 +89,7 @@ export const products = [
         price: 75.00,
         category: "Street",
         description: "Loose fit flannel with reinforced elbows.",
-        image: "asset/image/8.png",
+        image: "asset/image/8.jpg",
         newArrival: true,
         colors: ["#555555", "#800000"],
         sizes: ["M", "L", "XL"],
@@ -101,7 +101,7 @@ export const products = [
         price: 150.00,
         category: "Monochrome",
         description: "Classic silhouette with modern materials.",
-        image: "asset/image/9.png",
+        image: "asset/image/9.jpg",
         newArrival: false,
         colors: ["#000000"],
         sizes: ["S", "M", "L", "XL"],
@@ -113,7 +113,7 @@ export const products = [
         price: 95.00,
         category: "Cybernetic",
         description: "Utility vest with integrated cable routing.",
-        image: "asset/image/10.png",
+        image: "asset/image/10.jpg",
         newArrival: true,
         colors: ["#1a1a1a", "#333333"],
         sizes: ["One Size"],
@@ -316,3 +316,4 @@ export const collections = [
     }
 
 ];
+
