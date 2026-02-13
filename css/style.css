@@ -575,7 +575,7 @@ h2 {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 2fr));
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 3fr));
     gap: 2rem;
 }
 
@@ -588,7 +588,6 @@ h2 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 8px;
     overflow: hidden;
-    width: 50%;
 }
 
 .product-card:hover .product-card-image {
