@@ -77,7 +77,7 @@ export const products = [
         price: 110.00,
         category: "Monochrome",
         description: "Tailored fit with hidden zippers.",
-        image: "asset/image/7.png",
+        image: "asset/image/7.jpg",
         newArrival: false,
         colors: ["#000000", "#2c3e50"],
         sizes: ["30", "32", "34", "36"],
@@ -314,4 +314,5 @@ export const collections = [
         altText: "Street collection",
         className: "collection8"
     }
+
 ];
